@@ -1,4 +1,6 @@
 import Button from './shared/Button/Button';
+import Input from './shared/Input/Input';
+import Label from './shared/Label/Label';
 
 function App() {
   return (
@@ -49,6 +51,11 @@ function App() {
       <Button variant="text" theme="secondary" disabled>
         text secondary & disabled
       </Button>
+      <Input style={{ display: 'block' }} />
+      <Input style={{ display: 'block' }} disabled />
+      <Input style={{ display: 'block' }} isError />
+      <Label required text={'asdasd'} htmlFor="asd" />
+      <Input style={{ display: 'block' }} lines={5} id="asd" />
     </>
   );
 }

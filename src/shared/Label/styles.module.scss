@@ -1,0 +1,6 @@
+@import 'src/styles/variables.scss';
+
+.required_star {
+  color: $indicator-error;
+  font-weight: 600;
+}
