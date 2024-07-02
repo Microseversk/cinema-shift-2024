@@ -1,0 +1,19 @@
+@import 'src/styles/variables.scss';
+
+.input {
+  border-radius: $input-radius;
+  border: 1px solid $border-light;
+  padding: $input-paddings;
+
+  &:hover:not(:disabled):not(:focus):not(.input_error) {
+    border-color: $border-medium;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $indicator-focused;
+  }
+  &_error {
+    border: 2px solid $indicator-error !important;
+  }
+}
