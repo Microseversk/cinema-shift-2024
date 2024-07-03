@@ -5,10 +5,10 @@ import { FilmCardSkeleton } from './Components/FilmCard/FilmCardSkeleton';
 import styles from './styles.module.scss';
 export const RootPage = () => {
   const { data, isLoading } = useGetTodayQuery();
+
   return (
     <>
       <Typography variant="h2">Афиша</Typography>
-
       <div className={styles.cards_wrapper}>
         {isLoading ? (
           <>
