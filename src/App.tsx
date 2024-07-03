@@ -1,10 +1,3 @@
-import { Button } from './shared';
+import { Router } from './Components';
 
-export const App = () => (
-  <>
-    <Button variant="outlined">asdasds</Button>
-    <Button variant="contained">asdasds</Button>
-    <Button variant="link">asdasds</Button>
-    <Button variant="text">asdasds</Button>
-  </>
-);
+export const App = () => <Router />;
