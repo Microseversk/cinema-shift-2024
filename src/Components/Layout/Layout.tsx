@@ -5,7 +5,7 @@ export const Layout = () => {
   return (
     <>
       <Header>Header</Header>
-      <main style={{ paddingInline: '240px', width: '100%', paddingTop: '48px' }}>
+      <main style={{ width: '960px', paddingTop: '48px' }}>
         <Outlet />
       </main>
     </>

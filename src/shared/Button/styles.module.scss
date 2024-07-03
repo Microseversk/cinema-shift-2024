@@ -6,7 +6,7 @@
   }
 
   &:focus {
-    border: $border-width-focused solid $focus-border-color;
+    outline: $border-width-focused solid $focus-border-color;
   }
 
   &:disabled {
@@ -26,6 +26,7 @@
   padding: $btn-paddings;
   transition: background-color $transition-time;
   background-color: inherit;
+  cursor: pointer;
   outline: none;
 
   &.primary {
@@ -53,7 +54,6 @@
     }
 
     &.link {
-      cursor: pointer;
       text-decoration: underline;
     }
   }
@@ -78,7 +78,6 @@
     }
 
     &.link {
-      cursor: pointer;
       text-decoration: underline;
     }
   }
