@@ -27,9 +27,9 @@ export const Typography = ({ variant = 'p', color = 'primary', size, weight, ...
           {props.children}
         </h1>
       ) : (
-        <p className={typographyClasses} {...props}>
+        <span className={typographyClasses} {...props}>
           {props.children}
-        </p>
+        </span>
       )}
     </>
   );

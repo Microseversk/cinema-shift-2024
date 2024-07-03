@@ -24,10 +24,13 @@
   font-size: $size-xs;
 }
 .sm {
-  font-size: $size-md;
+  font-size: $size-sm;
 }
 .md {
   font-size: $size-md;
+}
+.thin {
+  font-weight: $weight-thin;
 }
 
 .normal {
