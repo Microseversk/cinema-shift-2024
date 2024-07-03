@@ -15,7 +15,7 @@
       background-color: $bg-hover-primary;
     }
     &:focus {
-      border: 2px solid $indicator-focused-alternative;
+      border: $border-width solid $indicator-focused-alternative;
     }
   }
 
@@ -25,21 +25,21 @@
     }
 
     &:focus {
-      border: 2px solid $indicator-focused-alternative;
+      border: $border-width-focused solid $indicator-focused-alternative;
     }
     &:disabled {
-      border: 2px solid $indicator-focused-alternative;
+      border: $border-width-focused solid $indicator-focused-alternative;
     }
   }
   &_outlined_primary {
-    border: 1px solid $indicator-focused-alternative;
+    border: $border-width solid $indicator-focused-alternative;
 
     &:hover:not(:disabled) {
       background-color: $bg-hover-outline-primary;
     }
 
     &:focus {
-      border-width: 2px;
+      border-width: $border-width-focused;
     }
 
     &:focus {
@@ -59,7 +59,7 @@
       background-color: #a4a6a7;
     }
     &:focus {
-      border: 2px solid $indicator-focused-alternative;
+      border: $border-width-focused solid $indicator-focused-alternative;
     }
   }
 
@@ -69,21 +69,21 @@
     }
 
     &:focus {
-      border: 2px solid $border-extra-light;
+      border: $border-width-focused solid $border-extra-light;
     }
     &:disabled {
-      border: 2px solid $border-extra-light;
+      border: $border-width-focused solid $border-extra-light;
     }
   }
   &_outlined_secondary {
-    border: 1px solid $border-extra-light;
+    border: $border-width solid $border-extra-light;
 
     &:hover:not(:disabled) {
       background-color: $bg-tertiary;
     }
 
     &:focus {
-      border-width: 2px;
+      border-width: $border-width-focused;
     }
 
     &:focus {
