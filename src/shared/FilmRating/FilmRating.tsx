@@ -1,18 +1,23 @@
+import styles from './styles.module.scss';
+
 interface FilmRatingProps {
   rating: number;
 }
 
 export const FilmRating = ({ rating }: FilmRatingProps) => {
-  const filledStars = [...Array(5)];
-  console.log(filledStars);
+  console.log('----');
   return (
-    <div>
-      {[...Array(rating)].slice(0, rating).map((_, index) => (
-        <img key={index} src="/icons/Star_solid.svg" alt="s" width={24} height={24} />
-      ))}
-      {[...Array(5 - rating)].map((_, index) => (
-        <img key={index} src="/icons/Star.svg" alt="s" width={24} height={24} />
-      ))}
+    <div className={styles.rating_wrapper}>
+      {[0, 1, 2, 3, 4].map((num) => {
+        const rate = rating - 2 * num;
+        const width = rate > 2 ? '100%' : `${rate * 50}%`;
+        console.log(rating, num, rate, width);
+        return (
+          <div className={styles.star} key={num}>
+            <div className={styles.star_filled} style={{ width: width }}></div>
+          </div>
+        );
+      })}
     </div>
   );
 };

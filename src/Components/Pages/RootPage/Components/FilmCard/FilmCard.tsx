@@ -22,7 +22,7 @@ export const FilmCard = ({ film }: FilmCardProps) => {
         </Typography>
       </div>
       <div>
-        <FilmRating rating={Math.round(Number(film.userRatings.kinopoisk) / 2)} />
+        <FilmRating rating={Number(film.userRatings.kinopoisk)} />
         <Typography size="sm" weight="thin" color="tertiary">
           Кинопоиск - {film.userRatings.kinopoisk}
         </Typography>
