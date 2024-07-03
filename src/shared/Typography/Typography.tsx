@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 interface TypographyProps extends React.ComponentPropsWithoutRef<'p'> {
   variant?: 'h1' | 'h2' | 'h3' | 'p';
   size?: 'xs' | 'sm' | 'md';
-  weight?: 'normal' | 'semibold' | 'bold';
+  weight?: 'thin' | 'normal' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'invert';
 }
 
