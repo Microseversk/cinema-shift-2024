@@ -7,9 +7,13 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 const Button = ({ variant = 'contained', theme = 'primary', ...props }: ButtonProps) => {
-  const buttonClasses = classNames(styles['button'], props.className, {
-    [styles[`button_${variant}_${theme}`]]: variant && theme,
-  });
+  const buttonClasses = classNames(
+    styles['button'],
+    {
+      [styles[`button_${variant}_${theme}`]]: variant && theme,
+    },
+    props.className,
+  );
   return (
     <button className={buttonClasses} type={props.type || 'button'} {...props}>
       {props.children}
