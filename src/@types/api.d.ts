@@ -60,6 +60,12 @@ export interface Schedule {
   seances: Seance[];
 }
 
+export interface DebitCard {
+  pan: string;
+  expireDate: string;
+  cvv: string;
+}
+
 interface ResponseBase {
   success: boolean;
   reason: string;
@@ -74,4 +80,26 @@ export interface GetFilmByIdResponse extends ResponseBase {
 
 export interface GetFilmScheduleByIdResponse extends ResponseBase {
   schedules: Schedule[];
+}
+
+export interface PutOrdersCancelBody {
+  orderId: string;
+}
+
+export interface CreatePaymentPerson {
+  firstname: string;
+  lastname: string;
+  middlename: string;
+  phone: string;
+}
+
+export interface PostPaymentBody {
+  filmId: FilmId;
+  person: CreatePaymentPerson;
+  seance: FilmTicketSeance;
+  debitCard: DebitCard;
+  tikcets: {
+    row: number;
+    column: number;
+  };
 }
