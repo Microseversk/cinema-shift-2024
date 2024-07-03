@@ -42,7 +42,7 @@ export interface Ticket {
 }
 export interface FilmHall {
   name: string;
-  places: any;
+  places: unknown;
   payedTickets: Ticket[];
 }
 export interface ScheduleSeance {

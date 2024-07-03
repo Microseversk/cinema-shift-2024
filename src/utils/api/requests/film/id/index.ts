@@ -4,5 +4,5 @@ import { RequestConfig } from '../../requestConfig';
 
 export type GetFilmByIdConfig = RequestConfig<FilmId>;
 
-export const GetFilmById = (config: GetFilmByIdConfig) =>
+export const getFilmById = (config: GetFilmByIdConfig) =>
   $api.get<GetFilmByIdResponse>(`film/${config.params}`, config?.config);
