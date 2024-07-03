@@ -1,22 +1,28 @@
 import classNames from 'classnames';
+
 import styles from './styles.module.scss';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?: 'contained' | 'outlined' | 'link' | 'text';
-  theme?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary';
+  loading?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
-export const Button = ({ variant = 'contained', theme = 'primary', ...props }: ButtonProps) => {
+export const Button = ({ variant = 'contained', color = 'primary', ...props }: ButtonProps) => {
   const buttonClasses = classNames(
     styles['button'],
     {
-      [styles[`button_${variant}_${theme}`]]: variant && theme,
+      [styles[`${variant}`]]: variant,
+      [styles[`${color}`]]: color,
     },
     props.className,
   );
+
   return (
     <button className={buttonClasses} type={props.type || 'button'} {...props}>
-      {props.children}
+      {props.icon}
+      {props.loading ? props.loading : props.children}
     </button>
   );
 };

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+
 import styles from './styles.module.scss';
 
 interface TypographyProps extends React.ComponentPropsWithoutRef<'p'> {
@@ -18,16 +19,18 @@ export const Typography = ({ variant = 'p', color = 'primary', size, weight, ...
     },
     props.className,
   );
-  if (variant.startsWith('h')) {
-    return (
-      <h1 className={typographyClasses} {...props}>
-        {props.children}
-      </h1>
-    );
-  }
+
   return (
-    <p className={typographyClasses} {...props}>
-      {props.children}
-    </p>
+    <>
+      {variant.startsWith('h') ? (
+        <h1 className={typographyClasses} {...props}>
+          {props.children}
+        </h1>
+      ) : (
+        <p className={typographyClasses} {...props}>
+          {props.children}
+        </p>
+      )}
+    </>
   );
 };

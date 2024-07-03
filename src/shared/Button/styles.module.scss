@@ -1,4 +1,24 @@
-@import 'src/styles/variables.scss';
+@import 'styles/variables.scss';
+
+@mixin button-states($hover-bg, $focus-border-color, $disabled-border-color) {
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+  }
+
+  &:focus {
+    border: $border-width-focused solid $focus-border-color;
+  }
+
+  &:disabled {
+    border: $border-width-focused solid $disabled-border-color;
+  }
+}
+
+@mixin button-variant($bg-color, $hover-bg, $focus-border-color, $disabled-border-color) {
+  background-color: $bg-color;
+
+  @include button-states($hover-bg, $focus-border-color, $disabled-border-color);
+}
 
 .button {
   border: none;
@@ -8,90 +28,58 @@
   background-color: inherit;
   outline: none;
 
-  &_contained_primary {
-    background-color: $bg-brand;
-
-    &:hover:not(:disabled) {
-      background-color: $bg-hover-primary;
+  &.primary {
+    &.contained {
+      @include button-variant(
+        $bg-brand,
+        $bg-hover-primary,
+        $indicator-focused-alternative,
+        $indicator-focused-alternative
+      );
     }
-    &:focus {
+
+    &.text {
+      @include button-states($bg-hover-outline-primary, $indicator-focused-alternative, $indicator-focused-alternative);
+    }
+
+    &.outlined {
       border: $border-width solid $indicator-focused-alternative;
+      @include button-states($bg-hover-outline-primary, $indicator-focused-alternative, $indicator-focused-alternative);
+
+      &:focus {
+        border-width: $border-width-focused;
+        background-color: $bg-primary;
+      }
+    }
+
+    &.link {
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 
-  &_text_primary {
-    &:hover:not(:disabled) {
-      background-color: $bg-hover-outline-primary;
+  &.secondary {
+    &.contained {
+      @include button-variant($bg-secondary, #a4a6a7, $indicator-focused-alternative, $indicator-focused-alternative);
     }
 
-    &:focus {
-      border: $border-width-focused solid $indicator-focused-alternative;
-    }
-    &:disabled {
-      border: $border-width-focused solid $indicator-focused-alternative;
-    }
-  }
-  &_outlined_primary {
-    border: $border-width solid $indicator-focused-alternative;
-
-    &:hover:not(:disabled) {
-      background-color: $bg-hover-outline-primary;
+    &.text {
+      @include button-states($bg-tertiary, $border-extra-light, $border-extra-light);
     }
 
-    &:focus {
-      border-width: $border-width-focused;
+    &.outlined {
+      border: $border-width solid $border-extra-light;
+      @include button-states($bg-tertiary, $border-extra-light, $border-extra-light);
+
+      &:focus {
+        border-width: $border-width-focused;
+        background-color: $bg-primary;
+      }
     }
 
-    &:focus {
-      background-color: $bg-primary;
+    &.link {
+      cursor: pointer;
+      text-decoration: underline;
     }
-  }
-  &_link_primary {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  //SECONDARY THEME
-
-  &_contained_secondary {
-    background-color: $bg-secondary;
-
-    &:hover:not(:disabled) {
-      background-color: #a4a6a7;
-    }
-    &:focus {
-      border: $border-width-focused solid $indicator-focused-alternative;
-    }
-  }
-
-  &_text_secondary {
-    &:hover:not(:disabled) {
-      background-color: $bg-tertiary;
-    }
-
-    &:focus {
-      border: $border-width-focused solid $border-extra-light;
-    }
-    &:disabled {
-      border: $border-width-focused solid $border-extra-light;
-    }
-  }
-  &_outlined_secondary {
-    border: $border-width solid $border-extra-light;
-
-    &:hover:not(:disabled) {
-      background-color: $bg-tertiary;
-    }
-
-    &:focus {
-      border-width: $border-width-focused;
-    }
-
-    &:focus {
-      background-color: $bg-primary;
-    }
-  }
-  &_link_secondary {
-    cursor: pointer;
-    text-decoration: underline;
   }
 }
