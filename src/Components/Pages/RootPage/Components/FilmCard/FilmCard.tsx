@@ -1,10 +1,12 @@
 import { Film } from '../../../../../@types/api';
 import { Button, FilmImage, FilmRating, Typography } from '../../../../../shared';
+
 import styles from './styles.module.scss';
 
 interface FilmCardProps {
   film: Film;
 }
+
 export const FilmCard = ({ film }: FilmCardProps) => (
   <div className={styles.card}>
     <FilmImage

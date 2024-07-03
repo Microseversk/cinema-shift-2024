@@ -1,6 +1,8 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+
 import styles from './styles.module.scss';
+
 export const FilmCardSkeleton = () => (
   <div className={styles.card}>
     <Skeleton height={300} />

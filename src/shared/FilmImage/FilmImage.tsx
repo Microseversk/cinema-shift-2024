@@ -1,4 +1,5 @@
-import { Typography } from '..';
+import { Typography } from '../Typography/Typography';
+
 import styles from './styles.module.scss';
 
 interface FilmImageProps {
