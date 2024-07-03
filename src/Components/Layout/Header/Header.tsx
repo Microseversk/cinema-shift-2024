@@ -1,4 +1,5 @@
 import { Typography } from '../../../shared';
+
 import styles from './styles.module.scss';
 
 interface HeaderProps extends React.ComponentPropsWithoutRef<'header'> {}
