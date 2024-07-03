@@ -6,7 +6,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   theme?: 'primary' | 'secondary';
 }
 
-const Button = ({ variant = 'contained', theme = 'primary', ...props }: ButtonProps) => {
+export const Button = ({ variant = 'contained', theme = 'primary', ...props }: ButtonProps) => {
   const buttonClasses = classNames(
     styles['button'],
     {
@@ -20,5 +20,3 @@ const Button = ({ variant = 'contained', theme = 'primary', ...props }: ButtonPr
     </button>
   );
 };
-
-export default Button;

@@ -4,7 +4,7 @@ interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   isError?: boolean;
   lines?: number;
 }
-const Input = ({ isError, lines = 1, ...props }: InputProps) => {
+export const Input = ({ isError, lines = 1, ...props }: InputProps) => {
   const inputClasses = classNames(styles['input'], { [styles['input_error']]: isError }, props.className);
 
   if (lines > 1) {
@@ -14,5 +14,3 @@ const Input = ({ isError, lines = 1, ...props }: InputProps) => {
   }
   return <input className={inputClasses} {...props} />;
 };
-
-export default Input;

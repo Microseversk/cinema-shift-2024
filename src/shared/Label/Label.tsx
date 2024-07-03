@@ -5,7 +5,7 @@ interface LabelProps extends React.ComponentPropsWithoutRef<'label'> {
   text: string;
 }
 
-const Label = ({ text, required, ...props }: LabelProps) => {
+export const Label = ({ text, required, ...props }: LabelProps) => {
   const labelClasses = classNames(props.className);
   return (
     <label {...props} className={labelClasses}>
@@ -14,5 +14,3 @@ const Label = ({ text, required, ...props }: LabelProps) => {
     </label>
   );
 };
-
-export default Label;

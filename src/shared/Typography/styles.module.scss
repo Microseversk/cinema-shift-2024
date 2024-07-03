@@ -1,0 +1,55 @@
+@import 'src/styles/variables.scss';
+
+.h1 {
+  font-size: $size-h1;
+  font-weight: $weight-bold;
+}
+
+.h2 {
+  font-size: $size-h2;
+  font-weight: $weight-bold;
+}
+
+.h3 {
+  font-size: $size-h3;
+  font-weight: $weight-semibold;
+}
+
+.p {
+  font-size: $size-md;
+  font-weight: $weight-normal;
+}
+
+.xs {
+  font-size: $size-xs;
+}
+.sm {
+  font-size: $size-md;
+}
+.md {
+  font-size: $size-md;
+}
+
+.normal {
+  font-weight: $weight-normal;
+}
+.semibold {
+  font-weight: $weight-semibold;
+}
+
+.bold {
+  font-weight: $weight-bold;
+}
+
+.primary {
+  color: $text-primary;
+}
+.secondary {
+  color: $text-secondary;
+}
+.tertiary {
+  color: $text-tertiary;
+}
+.invert {
+  color: $text-invert;
+}
