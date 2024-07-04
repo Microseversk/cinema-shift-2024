@@ -5,13 +5,13 @@ import styles from './styles.module.scss';
 
 export const FilmCardSkeleton = () => (
   <div className={styles.card}>
-    <Skeleton height={300} />
+    <Skeleton />
     <div>
       <h2>
-        <Skeleton width={`55%`} />
+        <Skeleton width={`100%`} />
       </h2>
       <span>
-        <Skeleton width={`30%`} />
+        <Skeleton width={`90%`} />
       </span>
     </div>
     <div>

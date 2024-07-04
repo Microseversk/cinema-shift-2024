@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 export const Layout = () => (
   <>
-    <Header>Header</Header>
+    <Header />
     <main className={styles.wrapper}>
       <Outlet />
     </main>
