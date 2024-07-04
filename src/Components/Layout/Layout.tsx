@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header/Header';
 
+import styles from './styles.module.scss';
+
 export const Layout = () => (
   <>
     <Header>Header</Header>
-    <main style={{ width: '960px', paddingTop: '48px' }}>
+    <main className={styles.wrapper}>
       <Outlet />
     </main>
   </>
