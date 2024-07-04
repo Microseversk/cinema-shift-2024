@@ -20,9 +20,13 @@
     cursor: pointer;
     gap: 16px;
 
-    &:hover {
-      opacity: 0.6;
+    &:hover > span {
       transition: $transition-time;
+      color: $text-brand;
+    }
+    &:hover > svg > path {
+      transition: $transition-time;
+      fill: $text-brand;
     }
   }
   & li:not(:first-child) img {

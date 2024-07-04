@@ -1,4 +1,4 @@
-import { Typography } from '../../../shared';
+import { Cinema, Exit, Ticket, Typography, User } from '../../../shared';
 
 import styles from './styles.module.scss';
 
@@ -8,18 +8,18 @@ export const Header = ({ ...props }: HeaderProps) => (
   <header className={styles.header} {...props}>
     <nav className={styles.nav}>
       <li>
-        <img src="/icons/Cinema.svg" alt="Иконка логотипа" />
+        <Cinema />
       </li>
       <li>
-        <img src="/icons/User.svg" alt="Иконка профиля" />
+        <User />
         <Typography color="secondary">Профиль</Typography>
       </li>
       <li>
-        <img src="/icons/Ticket.svg" alt="Иконка билетов" />
+        <Ticket />
         <Typography color="secondary">Билеты</Typography>
       </li>
       <li>
-        <img src="/icons/Exit.svg" alt="Иконка выхода" />
+        <Exit />
         <Typography color="secondary">Выйти</Typography>
       </li>
     </nav>
