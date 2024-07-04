@@ -1,7 +1,6 @@
-import { useGetTodayQuery } from '../../../hooks/useGetTodayQuery';
-import { Typography } from '../../../shared';
-import { FilmCard } from './Components';
-import { FilmCardSkeleton } from './Components/FilmCard/FilmCardSkeleton';
+import { FilmCard, FilmCardSkeleton } from '@src/Components/Pages/RootPage/Components';
+import { useGetTodayQuery } from '@src/hooks';
+import { Typography } from '@src/shared';
 
 import styles from './styles.module.scss';
 

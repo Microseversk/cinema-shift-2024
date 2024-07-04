@@ -1,8 +1,7 @@
+import { Layout } from '@src/Components/Layout/Layout';
+import { FilmPage, RootPage } from '@src/Components/Pages';
+import { ROUTES } from '@src/utils';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import { ROUTES } from '../../utils';
-import { Layout } from '../Layout/Layout';
-import { RootPage } from '../Pages';
-import { FilmPage } from '../Pages/FIlmPage/FilmPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -1,4 +1,4 @@
-@import 'styles/variables.scss';
+@import '@styles/variables.scss';
 
 @mixin button-states($hover-bg, $focus-border-color, $disabled-border-color) {
   &:hover:not(:disabled) {
@@ -41,7 +41,7 @@
 
     &.text {
       padding: 0;
-      border-radius: $btn-radius / 2;
+      border-radius: calc($btn-radius / 2);
     }
 
     &.outlined {

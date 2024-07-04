@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      src: '/src',
-      styles: '/src/styles',
+      '@src': '/src',
+      '@styles': '/src/styles',
     },
   },
 });

@@ -1,9 +1,8 @@
+import { FilmSchedule } from '@src/Components/Pages/FIlmPage/Components';
+import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
+import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FilmImage, FilmRating, Typography } from '../../../shared';
 
-import { useGetFilmByIdQuery } from '../../../hooks/useGetFilmByIdQuery';
-import { useGetFilmScheduleByIdQuery } from '../../../hooks/useGetFilmScheduleByIdQuery';
-import { FilmSchedule } from './Components';
 import styles from './styles.module.scss';
 
 export const FilmPage = () => {

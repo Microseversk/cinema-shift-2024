@@ -1,4 +1,5 @@
-import { Typography } from '../Typography/Typography';
+import { Typography } from '@src/shared';
+
 import styles from './styles.module.scss';
 
 interface TabsProps {

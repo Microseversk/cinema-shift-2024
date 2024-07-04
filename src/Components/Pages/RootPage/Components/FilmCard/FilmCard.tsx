@@ -1,6 +1,6 @@
+import { Film } from '@src/@types/api';
+import { Button, FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate } from 'react-router-dom';
-import { Film } from '../../../../../@types/api';
-import { Button, FilmImage, FilmRating, Typography } from '../../../../../shared';
 
 import styles from './styles.module.scss';
 

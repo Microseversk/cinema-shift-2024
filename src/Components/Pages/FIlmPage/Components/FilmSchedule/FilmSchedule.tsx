@@ -1,6 +1,6 @@
+import { Schedule } from '@src/@types/api';
+import { Button, Tabs, Typography } from '@src/shared';
 import { useState } from 'react';
-import { Schedule } from '../../../../../@types/api';
-import { Button, Tabs, Typography } from '../../../../../shared';
 
 import styles from './styles.module.scss';
 

@@ -1,6 +1,6 @@
+import { FilmId } from '@src/@types/api';
+import { getFilmScheduleById } from '@src/utils/api/requests';
 import { useQuery } from '@tanstack/react-query';
-import { FilmId } from '../@types/api';
-import { getFilmScheduleById } from '../utils/api/requests';
 
 export const useGetFilmScheduleByIdQuery = (id: FilmId) => {
   const query = useQuery({

@@ -1,5 +1,5 @@
-import { $api } from '../../../..';
-import { FilmId, GetFilmScheduleByIdResponse } from '../../../../../../@types/api';
+import { FilmId, GetFilmScheduleByIdResponse } from '@src/@types/api';
+import { $api } from '@src/utils';
 import { RequestConfig } from '../../../requestConfig';
 
 type GetFilmScheduleByIdConfig = RequestConfig<FilmId>;

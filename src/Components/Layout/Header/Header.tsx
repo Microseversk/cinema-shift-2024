@@ -1,4 +1,4 @@
-import { Cinema, Exit, Ticket, Typography, User } from '../../../shared';
+import { Cinema, Exit, Ticket, Typography, User } from '@src/shared';
 
 import styles from './styles.module.scss';
 
