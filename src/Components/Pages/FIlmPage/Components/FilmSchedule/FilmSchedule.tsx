@@ -2,6 +2,8 @@ import { Schedule } from '@src/@types/api';
 import { Button, Tabs, Typography } from '@src/shared';
 import { useState } from 'react';
 
+import { useFilmStore } from '@src/store/FilmStore';
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 interface FilmScheduleProps {
@@ -9,8 +11,17 @@ interface FilmScheduleProps {
 }
 
 export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
-  const [activeTab, setActiveTab] = useState(schedule[0].date);
   const [activeDay, setActiveDay] = useState(schedule[0]);
+  const { choosedHallDayTime, setChoosedHallDayTime } = useFilmStore();
+
+  if (!choosedHallDayTime) {
+    setChoosedHallDayTime({
+      date: schedule[0].date,
+      hall: schedule[0].seances[0].hall,
+      time: schedule[0].seances[0].time,
+    });
+  }
+
   const hallsSchedule = [
     { seances: activeDay.seances.filter((seance) => seance.hall.name === 'Red'), name: 'Красный зал' },
     { seances: activeDay.seances.filter((seance) => seance.hall.name === 'Green'), name: 'Зелёный зал' },
@@ -21,10 +32,14 @@ export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
     <div>
       <Tabs
         tabs={schedule.map((item) => item.date)}
-        activeTab={activeTab}
-        onTabClick={(tab: string) => {
-          setActiveTab(tab);
-          setActiveDay(schedule.find((item) => item.date === tab)!);
+        activeTab={choosedHallDayTime?.date!}
+        onTabClick={(date: string) => {
+          setActiveDay(schedule.find((item) => item.date === date)!);
+          setChoosedHallDayTime({
+            date: date,
+            hall: schedule.find((s) => s.date === date)?.seances[0].hall!,
+            time: schedule.find((s) => s.date === date)?.seances[0].time!,
+          });
         }}
       />
       {hallsSchedule.map((hall, index) => (
@@ -34,7 +49,21 @@ export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
           </Typography>
           <div className={styles.halls_time_wrapper}>
             {hall.seances.map((seance, index) => (
-              <Button key={index} className={styles.btn_time} variant="outlined">
+              <Button
+                key={index}
+                className={classNames(styles.btn_time, {
+                  [styles.choosed_time]:
+                    seance.hall.name === choosedHallDayTime?.hall.name && seance.time === choosedHallDayTime?.time,
+                })}
+                variant="outlined"
+                onClick={() => {
+                  setChoosedHallDayTime({
+                    date: activeDay.date,
+                    hall: seance.hall,
+                    time: seance.time,
+                  });
+                }}
+              >
                 {seance.time}
               </Button>
             ))}

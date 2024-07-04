@@ -12,6 +12,11 @@
   flex-wrap: wrap;
 }
 
+.choosed_time {
+  color: $text-invert;
+  background-color: $indicator-medium !important;
+}
+
 .hall_wrapper {
   margin-top: 24px;
 }

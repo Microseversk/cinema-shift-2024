@@ -3,6 +3,7 @@ import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
 import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { Places } from './Components/Places/Places';
 import styles from './styles.module.scss';
 
 export const FilmPage = () => {
@@ -39,11 +40,9 @@ export const FilmPage = () => {
               Kinopoisk - {film.userRatings.kinopoisk}
             </Typography>
           </div>
-          <div>
-            <Typography weight="thin" color="secondary">
-              {film.description}
-            </Typography>
-          </div>
+          <Typography weight="thin" color="secondary">
+            {film.description}
+          </Typography>
         </div>
       </div>
       <div className={styles.schedule}>
@@ -52,6 +51,7 @@ export const FilmPage = () => {
       </div>
       <div className={styles.places}>
         <Typography variant="h2">Выбор места</Typography>
+        <Places />
       </div>
       <div className={styles.buying}>
         <Typography variant="h2">Покупка</Typography>

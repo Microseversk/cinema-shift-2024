@@ -1,0 +1,50 @@
+@import '@styles/variables.scss';
+
+.places_wrapper {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.screen {
+  height: 4px;
+  background-color: $indicator-light;
+  margin-top: 8px;
+  border-radius: 16px;
+}
+
+.places_row {
+  display: flex;
+  gap: 24px;
+}
+
+.place {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  background-color: $brand;
+  transition: scale $transition-time;
+  border-radius: 4px;
+
+  & > span {
+    visibility: hidden;
+  }
+
+  &:disabled {
+    background-color: $indicator-light !important;
+    border: none;
+  }
+
+  &:hover:not(:disabled) {
+    scale: 2.5;
+
+    & > span {
+      visibility: visible;
+    }
+  }
+}

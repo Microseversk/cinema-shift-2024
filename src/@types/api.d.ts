@@ -43,14 +43,15 @@ export interface Ticket {
 
 export interface Place {
   price: number;
-  type: 'BLOCKED' | 'ECONOM';
+  type: 'BLOCKED' | 'ECONOM' | 'COMFORT';
 }
 
 export interface FilmHall {
   name: 'Red' | 'Green' | 'Blue';
-  places: Place[];
+  places: Place[][];
   payedTickets: Ticket[];
 }
+
 export interface ScheduleSeance {
   time: string;
   hall: FilmHall;
