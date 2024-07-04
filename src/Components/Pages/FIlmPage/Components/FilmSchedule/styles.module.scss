@@ -1,0 +1,17 @@
+@import 'styles/variables.scss';
+
+.btn_time {
+  padding: 10px 16px;
+  border-color: $indicator-light !important;
+}
+
+.halls_time_wrapper {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hall_wrapper {
+  margin-top: 24px;
+}

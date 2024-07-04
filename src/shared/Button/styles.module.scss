@@ -40,7 +40,8 @@
     }
 
     &.text {
-      @include button-states($bg-hover-outline-primary, $indicator-focused-alternative, $indicator-focused-alternative);
+      padding: 0;
+      border-radius: $btn-radius / 2;
     }
 
     &.outlined {

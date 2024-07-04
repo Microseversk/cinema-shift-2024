@@ -40,14 +40,21 @@ export interface Ticket {
   seance: FilmTicketSeance;
   phone: string;
 }
+
+export interface Place {
+  price: number;
+  type: 'BLOCKED' | 'ECONOM';
+}
+
 export interface FilmHall {
-  name: string;
-  places: unknown;
+  name: 'Red' | 'Green' | 'Blue';
+  places: Place[];
   payedTickets: Ticket[];
 }
 export interface ScheduleSeance {
   time: string;
   hall: FilmHall;
+  payedTickets: Ticket[];
 }
 
 export interface FilmTicketSeance {
@@ -57,7 +64,7 @@ export interface FilmTicketSeance {
 
 export interface Schedule {
   date: string;
-  seances: Seance[];
+  seances: ScheduleSeance[];
 }
 
 export interface DebitCard {
