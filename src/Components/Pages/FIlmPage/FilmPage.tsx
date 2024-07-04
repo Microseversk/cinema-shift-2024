@@ -3,6 +3,7 @@ import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
 import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { API } from '@src/utils/constants/api';
 import { Places } from './Components/Places/Places';
 import styles from './styles.module.scss';
 
@@ -26,7 +27,7 @@ export const FilmPage = () => {
       </Typography>
       <div className={styles.info}>
         <FilmImage
-          image={`https://shift-backend.onrender.com${film?.img}`}
+          image={`${API.IMG_BASE_URL}${film?.img}`}
           alt={film.originalName}
           genre={film.genres[0]}
           country={film.country.name}
