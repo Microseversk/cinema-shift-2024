@@ -1,3 +1,5 @@
-export * from './useGetFilmByIdQuery';
-export * from './useGetFilmScheduleByIdQuery';
-export * from './useGetTodayQuery';
+import { useGetFilmByIdQuery } from './useGetFilmByIdQuery';
+import { useGetFilmScheduleByIdQuery } from './useGetFilmScheduleByIdQuery';
+import { useGetTodayQuery } from './useGetTodayQuery';
+
+export { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery, useGetTodayQuery };
