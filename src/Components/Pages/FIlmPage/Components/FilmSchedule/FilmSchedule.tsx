@@ -11,7 +11,7 @@ interface FilmScheduleProps {
 }
 
 export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
-  const [activeDay, setActiveDay] = useState(schedule[0]);
+  const [activeDay, setActiveDay] = useState<Schedule | null>(schedule[0] || null);
   const { choosedHallDayTime, setChoosedHallDayTime } = useFilmStore();
 
   if (!choosedHallDayTime) {
@@ -22,25 +22,34 @@ export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
     });
   }
 
+  if (!activeDay) {
+    return null;
+  }
+
   const hallsSchedule = [
     { seances: activeDay.seances.filter((seance) => seance.hall.name === 'Red'), name: 'Красный зал' },
     { seances: activeDay.seances.filter((seance) => seance.hall.name === 'Green'), name: 'Зелёный зал' },
     { seances: activeDay.seances.filter((seance) => seance.hall.name === 'Blue'), name: 'Синий зал' },
   ];
 
+  const handleTabClick = (date: string) => {
+    const selectedDate = schedule.find((s) => s.date === date) || null;
+    if (selectedDate) {
+      setActiveDay(selectedDate);
+      setChoosedHallDayTime({
+        date: selectedDate.date,
+        hall: selectedDate.seances[0].hall,
+        time: selectedDate.seances[0].time,
+      });
+    }
+  };
+
   return (
     <div>
       <Tabs
         tabs={schedule.map((item) => item.date)}
-        activeTab={choosedHallDayTime?.date!}
-        onTabClick={(date: string) => {
-          setActiveDay(schedule.find((item) => item.date === date)!);
-          setChoosedHallDayTime({
-            date: date,
-            hall: schedule.find((s) => s.date === date)?.seances[0].hall!,
-            time: schedule.find((s) => s.date === date)?.seances[0].time!,
-          });
-        }}
+        activeTab={choosedHallDayTime?.date ? choosedHallDayTime.date : ''}
+        onTabClick={handleTabClick}
       />
       {hallsSchedule.map((hall, index) => (
         <div key={index} className={styles.hall_wrapper}>
