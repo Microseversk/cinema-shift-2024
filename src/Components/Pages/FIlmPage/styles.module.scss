@@ -1,0 +1,22 @@
+.film_page_wrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 32px;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+}

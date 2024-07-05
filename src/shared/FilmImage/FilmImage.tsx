@@ -1,8 +1,9 @@
-import { Typography } from '../Typography/Typography';
+import classNames from 'classnames';
+import { Typography } from '../typography/Typography';
 
 import styles from './styles.module.scss';
 
-interface FilmImageProps {
+interface FilmImageProps extends React.ComponentPropsWithoutRef<'div'> {
   image: string;
   alt: string;
   genre: string;
@@ -10,8 +11,8 @@ interface FilmImageProps {
   releaseDate: string;
 }
 
-export const FilmImage = ({ image, alt, country, releaseDate, genre }: FilmImageProps) => (
-  <div className={styles.wrapper}>
+export const FilmImage = ({ image, alt, country, releaseDate, genre, ...props }: FilmImageProps) => (
+  <div {...props} className={classNames(styles.wrapper, props.className)}>
     <img src={image} alt={alt} className={styles.img} />
     <div className={styles.info}>
       <Typography size="sm">{genre}</Typography>

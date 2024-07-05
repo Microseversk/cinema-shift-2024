@@ -1,0 +1,24 @@
+@import '@styles/variables.scss';
+
+.tabs_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: $tabs-border-radius;
+  background-color: $bg-secondary;
+}
+
+.tab {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: $tab-border-radius;
+  transition: background-color $transition-time;
+  margin: 2px;
+  padding: 10px 16px;
+}
+
+.tab_active {
+  @extend .tab;
+  background-color: $bg-primary;
+}

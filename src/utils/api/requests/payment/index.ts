@@ -1,5 +1,5 @@
-import { $api } from '../..';
-import { PostPaymentBody } from '../../../../@types/api';
+import { PostPaymentBody } from '@src/@types/api';
+import { $api } from '@src/utils';
 import { RequestConfig } from '../requestConfig';
 
 type PostPaymentConfig = RequestConfig<PostPaymentBody>;

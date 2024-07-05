@@ -1,5 +1,5 @@
-import { $api } from '../..';
-import { GetTodayResponse } from '../../../../@types/api';
+import { GetTodayResponse } from '@src/@types/api';
+import { $api } from '@src/utils';
 import { RequestConfig } from '../requestConfig';
 
 type GetTodayConfig = RequestConfig;

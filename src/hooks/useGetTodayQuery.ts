@@ -1,5 +1,5 @@
+import { getToday } from '@src/utils/api/requests';
 import { useQuery } from '@tanstack/react-query';
-import { getToday } from '../utils/api/requests';
 
 export const useGetTodayQuery = () => {
   const query = useQuery({

@@ -1,5 +1,5 @@
-import { $api } from '../..';
-import { PutOrdersCancelBody } from '../../../../@types/api';
+import { PutOrdersCancelBody } from '@src/@types/api';
+import { $api } from '@src/utils';
 import { RequestConfig } from '../requestConfig';
 
 type putOrdersCancelConfig = RequestConfig<PutOrdersCancelBody>;

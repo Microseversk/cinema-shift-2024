@@ -9,14 +9,14 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   icon?: React.ReactNode;
 }
 
-export const Button = ({ variant = 'contained', color = 'primary', ...props }: ButtonProps) => {
+export const Button = ({ variant = 'contained', color = 'primary', className, ...props }: ButtonProps) => {
   const buttonClasses = classNames(
-    styles['button'],
+    styles.button,
     {
       [styles[`${variant}`]]: variant,
       [styles[`${color}`]]: color,
     },
-    props.className,
+    className,
   );
 
   return (

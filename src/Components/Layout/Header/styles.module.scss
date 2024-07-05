@@ -1,4 +1,5 @@
-@import 'styles/variables.scss';
+@import '@styles/variables.scss';
+@import '@styles/mixins.scss';
 
 .header {
   width: 100%;
@@ -13,6 +14,15 @@
   align-items: center;
   gap: 32px;
 
+  @include tablet {
+    width: 90%;
+  }
+
+  @include phone {
+    width: 100%;
+    overflow: auto;
+  }
+
   padding-block: 22px;
 
   & li {
@@ -20,9 +30,13 @@
     cursor: pointer;
     gap: 16px;
 
-    &:hover {
-      opacity: 0.6;
+    &:hover > span {
       transition: $transition-time;
+      color: $text-brand;
+    }
+    &:hover > svg > path {
+      transition: $transition-time;
+      fill: $text-brand;
     }
   }
   & li:not(:first-child) img {

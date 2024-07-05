@@ -22,10 +22,16 @@ $weight-normal: 500;
 $weight-semibold: 600;
 $weight-bold: 700;
 
+//Tabs
+$tabs-border-radius: 16px;
+$tab-border-radius: 14px;
+
 //Header
 $nav-item-icon-size: 24px;
 
 //Other
+$brand: #712d9c;
+
 $bg-brand: #9534d2;
 $bg-primary: #fff;
 $bg-tertiary: #f9fafb;
@@ -38,6 +44,7 @@ $border-light: #ced2da;
 $border-medium: #97a1af;
 
 $text-title: #292929;
+$text-brand: #712d9c;
 $text-invert: #ffffff;
 $text-primary: #141c24;
 $text-secondary: #344051;
@@ -54,3 +61,4 @@ $indicator-focused: #4c94ff;
 $indicator-error: #f64c4c;
 $indicator-light: #ced2da;
 $indicator-attention: #ffb219;
+$indicator-medium: #97a1af;

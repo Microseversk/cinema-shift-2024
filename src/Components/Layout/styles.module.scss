@@ -1,0 +1,14 @@
+@import '@styles/mixins.scss';
+
+.wrapper {
+  padding-top: 48px;
+  max-width: 960px;
+
+  @include tablet {
+    width: 90%;
+  }
+
+  @include phone {
+    width: 100%;
+  }
+}
