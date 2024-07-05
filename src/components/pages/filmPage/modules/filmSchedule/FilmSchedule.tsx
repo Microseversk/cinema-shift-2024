@@ -1,9 +1,9 @@
 import { Schedule } from '@src/@types/api';
 import { Button, Tabs, Typography } from '@src/shared';
-import { useState } from 'react';
-
 import { useFilmStore } from '@src/store/FilmStore';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+
 import styles from './styles.module.scss';
 
 interface FilmScheduleProps {
@@ -14,13 +14,15 @@ export const FilmSchedule = ({ schedule }: FilmScheduleProps) => {
   const [activeDay, setActiveDay] = useState<Schedule | null>(schedule[0] || null);
   const { choosedHallDayTime, setChoosedHallDayTime } = useFilmStore();
 
-  if (!choosedHallDayTime) {
-    setChoosedHallDayTime({
-      date: schedule[0].date,
-      hall: schedule[0].seances[0].hall,
-      time: schedule[0].seances[0].time,
-    });
-  }
+  useEffect(() => {
+    if (!choosedHallDayTime) {
+      setChoosedHallDayTime({
+        date: schedule[0].date,
+        hall: schedule[0].seances[0].hall,
+        time: schedule[0].seances[0].time,
+      });
+    }
+  }, [choosedHallDayTime]);
 
   if (!activeDay) {
     return null;
