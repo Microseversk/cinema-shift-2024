@@ -1,3 +1,3 @@
-export * from './Layout/header/Header';
-export * from './Layout/Layout';
+export * from './layout/header/Header';
+export * from './layout/Layout';
 export * from './router/Router';
