@@ -1,10 +1,10 @@
-import { FilmSchedule } from '@src/Components/Pages/FIlmPage/Components';
+import { FilmSchedule } from '@src/Components/pages/fIlmPage/modules';
 import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
 import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { API } from '@src/utils/constants/api';
-import { Places } from './Components/Places/Places';
+import { Places } from './modules/places/Places';
 import styles from './styles.module.scss';
 
 export const FilmPage = () => {

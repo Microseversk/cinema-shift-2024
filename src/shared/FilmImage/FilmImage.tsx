@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Typography } from '../Typography/Typography';
+import { Typography } from '../typography/Typography';
 
 import styles from './styles.module.scss';
 

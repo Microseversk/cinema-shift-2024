@@ -1,2 +1,2 @@
-export * from './FIlmPage/FilmPage';
-export * from './RootPage/RootPage';
+export * from './fIlmPage/FilmPage';
+export * from './rootPage/RootPage';
