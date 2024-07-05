@@ -3,6 +3,7 @@ import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { API } from '@src/utils/constants/api';
+import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { FilmSchedule } from './modules';
 import { Places } from './modules/places/Places';
 import styles from './styles.module.scss';
@@ -22,7 +23,7 @@ export const FilmPage = () => {
 
   return (
     <div className={styles.film_page_wrapper}>
-      <Typography onClick={() => navigate(-1)} className={styles.arrow}>
+      <Typography onClick={() => navigate(NAVIGATE_ROUTES.PREVIOUS_PAGE)} className={styles.arrow}>
         {'<'} Назад
       </Typography>
       <div className={styles.info}>

@@ -3,6 +3,7 @@ import { Button, FilmImage, FilmRating, Typography } from '@src/shared';
 import { useNavigate } from 'react-router-dom';
 
 import { API } from '@src/utils/constants/api';
+import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import styles from './styles.module.scss';
 
 interface FilmCardProps {
@@ -33,7 +34,7 @@ export const FilmCard = ({ film }: FilmCardProps) => {
           Кинопоиск - {film.userRatings.kinopoisk}
         </Typography>
       </div>
-      <Button onClick={() => navigate(`/film/${film.id}`)}>
+      <Button onClick={() => navigate(NAVIGATE_ROUTES.FILM_PAGE_ID(film.id))}>
         <Typography weight="semibold" color="invert">
           Подробнее
         </Typography>
