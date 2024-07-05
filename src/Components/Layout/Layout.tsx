@@ -1,5 +1,5 @@
-import { Header } from '@src/Components/Layout/header/Header';
 import { Outlet } from 'react-router-dom';
+import { Header } from '..';
 import styles from './styles.module.scss';
 
 export const Layout = () => (
