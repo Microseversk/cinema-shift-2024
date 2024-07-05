@@ -7,20 +7,22 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   color?: 'primary' | 'secondary';
   loading?: React.ReactNode;
   icon?: React.ReactNode;
+  fullWidth?: boolean;
 }
 
-export const Button = ({ variant = 'contained', color = 'primary', className, ...props }: ButtonProps) => {
+export const Button = ({ variant = 'contained', color = 'primary', fullWidth, className, ...props }: ButtonProps) => {
   const buttonClasses = classNames(
     styles.button,
     {
       [styles[`${variant}`]]: variant,
       [styles[`${color}`]]: color,
+      [styles.full_width]: fullWidth,
     },
     className,
   );
 
   return (
-    <button className={buttonClasses} type={props.type || 'button'} {...props}>
+    <button {...props} className={buttonClasses} type={props.type || 'button'}>
       {props.icon}
       {props.loading ? props.loading : props.children}
     </button>

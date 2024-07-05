@@ -1,85 +1,48 @@
 @import '@styles/variables.scss';
 
-@mixin button-states($hover-bg, $focus-border-color, $disabled-border-color) {
-  &:hover:not(:disabled) {
-    background-color: $hover-bg;
-  }
-
-  &:focus {
-    outline: $border-width-focused solid $focus-border-color;
-  }
-
-  &:disabled {
-    border: $border-width-focused solid $disabled-border-color;
-  }
-}
-
-@mixin button-variant($bg-color, $hover-bg, $focus-border-color, $disabled-border-color) {
-  background-color: $bg-color;
-
-  @include button-states($hover-bg, $focus-border-color, $disabled-border-color);
+.full_width {
+  width: 100%;
 }
 
 .button {
-  border: none;
   border-radius: $btn-radius;
   padding: $btn-paddings;
-  transition: background-color $transition-time;
-  background-color: inherit;
+  transition-duration: $transition-time;
   cursor: pointer;
-  outline: none;
+  border: none;
+}
 
+.contained {
   &.primary {
-    &.contained {
-      @include button-variant(
-        $bg-brand,
-        $bg-hover-primary,
-        $indicator-focused-alternative,
-        $indicator-focused-alternative
-      );
-    }
+    background-color: $bg-brand;
 
-    &.text {
-      padding: 0;
-      border-radius: calc($btn-radius / 2);
-    }
-
-    &.outlined {
-      border: $border-width solid $indicator-focused-alternative;
-      @include button-states($bg-hover-outline-primary, $indicator-focused-alternative, $indicator-focused-alternative);
-
-      &:focus {
-        border-width: $border-width-focused;
-        background-color: $bg-primary;
-      }
-    }
-
-    &.link {
-      text-decoration: underline;
+    &:hover {
+      background-color: $bg-hover-primary;
     }
   }
-
   &.secondary {
-    &.contained {
-      @include button-variant($bg-secondary, #a4a6a7, $indicator-focused-alternative, $indicator-focused-alternative);
-    }
+    background-color: $bg-secondary;
 
-    &.text {
-      @include button-states($bg-tertiary, $border-extra-light, $border-extra-light);
-    }
-
-    &.outlined {
-      border: $border-width solid $border-extra-light;
-      @include button-states($bg-tertiary, $border-extra-light, $border-extra-light);
-
-      &:focus {
-        border-width: $border-width-focused;
-        background-color: $bg-primary;
-      }
-    }
-
-    &.link {
-      text-decoration: underline;
+    &:hover {
+      opacity: 0.7;
     }
   }
+}
+
+.outlined {
+  border: $border-width solid $bg-brand;
+  background-color: transparent;
+}
+
+.text {
+  padding: 0;
+  border: none;
+  background-color: inherit;
+}
+
+.link {
+  padding: 0;
+  border: none;
+  text-decoration: underline;
+  background-color: inherit;
 }

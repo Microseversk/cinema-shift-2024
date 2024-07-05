@@ -1,9 +1,9 @@
 import { Film } from '@src/@types/api';
 import { Button, FilmImage, FilmRating, Typography } from '@src/shared';
-import { Link } from 'react-router-dom';
-
 import { API } from '@src/utils/constants/api';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { Link } from 'react-router-dom';
+
 import styles from './styles.module.scss';
 
 interface FilmCardProps {
@@ -33,7 +33,7 @@ export const FilmCard = ({ film }: FilmCardProps) => {
         </Typography>
       </div>
       <Link to={NAVIGATE_ROUTES.FILM_PAGE_ID(film.id)}>
-        <Button>
+        <Button fullWidth variant="contained" color="primary">
           <Typography weight="semibold" color="invert">
             Подробнее
           </Typography>
