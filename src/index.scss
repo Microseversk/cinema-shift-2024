@@ -10,6 +10,10 @@
   list-style: none;
 }
 
+a:visited {
+  color: inherit;
+}
+
 body * {
   font-family:
     system-ui,
