@@ -4,7 +4,6 @@ import styles from './styles.module.scss';
 
 export const Places = () => {
   const placeRows = useFilmStore((store) => store.choosedHallDayTime?.hall.places);
-  console.log(placeRows);
   return (
     <div className={styles.places_wrapper}>
       <Typography size="xs" weight="thin" color="secondary">
