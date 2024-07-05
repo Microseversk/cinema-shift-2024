@@ -1,9 +1,12 @@
+import { Place } from '@src/@types/api';
 import { Button, Typography } from '@src/shared';
-import { useFilmStore } from '@src/store/FilmStore';
 import styles from './styles.module.scss';
 
-export const Places = () => {
-  const placeRows = useFilmStore((store) => store.choosedHallDayTime?.hall.places);
+interface FilmShowPlacesProps {
+  places: Place[][];
+}
+
+export const FilmShowPlaces = ({ places: placeRows }: FilmShowPlacesProps) => {
   return (
     <div className={styles.places_wrapper}>
       <Typography size="xs" weight="thin" color="secondary">

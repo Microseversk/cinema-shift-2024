@@ -2,7 +2,12 @@
 
 .btn_time {
   padding: 10px 16px;
-  border-color: $indicator-light !important;
+  border-color: $indicator-light;
+
+  &:hover {
+    background-color: $indicator-medium;
+    color: $text-invert;
+  }
 }
 
 .halls_time_wrapper {

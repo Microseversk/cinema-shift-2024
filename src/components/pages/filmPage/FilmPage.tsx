@@ -1,9 +1,10 @@
 import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
 import { Typography } from '@src/shared';
 import { Link, useParams } from 'react-router-dom';
-import { FilmInfo, FilmSchedule, Places } from './modules';
+import { FilmInfo } from './modules';
 
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { ChooseTicketSection } from './modules/chooseTicketSection/ChooseTicketSection';
 import styles from './styles.module.scss';
 
 export const FilmPage = () => {
@@ -15,8 +16,6 @@ export const FilmPage = () => {
     return <Typography variant="h2">Загрузка...</Typography>;
   }
 
-  console.log(film, schedules);
-
   if (!film) {
     return <Typography variant="h2">Фильма не найдено</Typography>;
   }
@@ -26,24 +25,11 @@ export const FilmPage = () => {
       <Link to={NAVIGATE_ROUTES.ROOT_PAGE}>
         <Typography className={styles.arrow}>{'<'} Назад</Typography>
       </Link>
-
+      <FilmInfo film={film} />
       {schedules?.length ? (
-        <>
-          <FilmInfo film={film} />
-          <div className={styles.schedule}>
-            <Typography variant="h2">Расписание</Typography>
-            <FilmSchedule schedule={schedules} />
-          </div>
-          <div className={styles.places}>
-            <Typography variant="h2">Выбор места</Typography>
-            <Places />
-          </div>
-          <div className={styles.buying}>
-            <Typography variant="h2">Покупка</Typography>
-          </div>
-        </>
+        <ChooseTicketSection schedules={schedules} />
       ) : (
-        <Typography variant="h2">Расписание отсутствует</Typography>
+        <Typography variant="h2">Показы отсутствуют</Typography>
       )}
     </div>
   );
