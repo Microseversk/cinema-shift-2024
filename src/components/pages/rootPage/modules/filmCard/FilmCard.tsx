@@ -1,6 +1,6 @@
 import { Film } from '@src/@types/api';
 import { Button, FilmImage, FilmRating, Typography } from '@src/shared';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { API } from '@src/utils/constants/api';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
@@ -11,8 +11,6 @@ interface FilmCardProps {
 }
 
 export const FilmCard = ({ film }: FilmCardProps) => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.card}>
       <FilmImage
@@ -34,11 +32,13 @@ export const FilmCard = ({ film }: FilmCardProps) => {
           Кинопоиск - {film.userRatings.kinopoisk}
         </Typography>
       </div>
-      <Button onClick={() => navigate(NAVIGATE_ROUTES.FILM_PAGE_ID(film.id))}>
-        <Typography weight="semibold" color="invert">
-          Подробнее
-        </Typography>
-      </Button>
+      <Link to={NAVIGATE_ROUTES.FILM_PAGE_ID(film.id)}>
+        <Button>
+          <Typography weight="semibold" color="invert">
+            Подробнее
+          </Typography>
+        </Button>
+      </Link>
     </div>
   );
 };
