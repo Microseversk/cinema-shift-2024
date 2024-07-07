@@ -1,6 +1,7 @@
 @import '@styles/variables';
 
 .input {
+  width: 100%;
   border-radius: $input-radius;
   border: 1px solid $border-light;
   padding: $input-paddings;
@@ -10,11 +11,29 @@
     border: 2px solid $indicator-focused;
   }
 
-  &:hover:not(:disabled, :focus, .input_error) {
+  &:hover:not(:disabled, :focus) {
     border-color: $border-medium;
   }
 
-  &_error {
+  &.input_error {
     border: 2px solid $indicator-error !important;
+  }
+}
+
+.label {
+  display: block;
+  font-size: $size-sm;
+  font-weight: $weight-regular;
+  margin-bottom: 6px;
+}
+
+.message {
+  margin-top: 4px;
+  font-size: $size-sm;
+  font-weight: $weight-regular;
+  color: $text-tertiary;
+
+  &.message_error {
+    color: $indicator-error;
   }
 }

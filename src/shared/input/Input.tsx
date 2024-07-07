@@ -1,30 +1,29 @@
 import classNames from 'classnames';
 
+import { useId } from 'react';
 import styles from './styles.module.scss';
 
 interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   isError?: boolean;
-  lines?: number;
+  id?: string;
+  label?: string;
+  message?: string;
 }
 
-export const Input = ({ isError, lines = 1, ...props }: InputProps) => {
-  const inputClasses = classNames(
-    styles['input'],
-    { [styles['input_error']]: isError },
-    props.className,
-  );
+export const Input = ({ isError, label, message, id, ...props }: InputProps) => {
+  const _id = useId();
+  const inputClasses = classNames(styles.input, { [styles.input_error]: isError }, props.className);
+  const messageClasses = classNames(styles.message, { [styles.message_error]: isError && message });
 
   return (
-    <>
-      {lines > 1 ? (
-        <textarea
-          className={inputClasses}
-          rows={lines}
-          {...(props as React.ComponentPropsWithoutRef<'textarea'>)}
-        />
-      ) : (
-        <input className={inputClasses} {...props} />
+    <div>
+      {label && (
+        <label className={styles.label} htmlFor={id || _id}>
+          {label}
+        </label>
       )}
-    </>
+      <input className={inputClasses} id={id || _id} {...props} />
+      {message && <p className={messageClasses}>{message}</p>}
+    </div>
   );
 };

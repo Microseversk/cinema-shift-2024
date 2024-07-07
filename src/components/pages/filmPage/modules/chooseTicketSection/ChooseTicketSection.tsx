@@ -3,8 +3,10 @@ import { Button, Tabs, Typography } from '@src/shared';
 import { useState } from 'react';
 import { FilmShowPlaces, FilmShowTimes } from '..';
 
+import { Modal } from '@src/shared/modal/Modal';
 import { HALLS_MAP } from '@src/utils/constants/hallsMap';
 import { MONTH_MAP } from '@src/utils/constants/monthMap';
+import { BuyTicketsForm } from './buyTicketsForm/BuyTicketsForm';
 import styles from './styles.module.scss';
 
 export interface ChoosedPlace extends Omit<Place, 'type'> {
@@ -29,6 +31,7 @@ const placesObjectToArray = (places: ChoosedPlace[]) => {
 };
 
 export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [choosedDay, setChoosedDay] = useState<Schedule>(schedules[0]);
   const [choosedTime, setChoosedTime] = useState<Omit<ScheduleSeance, 'payedTickets'>>({
     hall: choosedDay.seances[0].hall,
@@ -116,9 +119,17 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
             <Typography tag="h3" variant="h3">
               Сумма:{choosedPlaces.reduce((a, b) => a + b.price, 0)} {' ₽'}
             </Typography>
-            <Button>Купить</Button>
+            <Button onClick={() => setModalIsOpen(true)}>Купить</Button>
           </div>
         )}
+        <Modal
+          isOpen={modalIsOpen}
+          onClose={() => {
+            setModalIsOpen(false);
+          }}
+        >
+          <BuyTicketsForm />
+        </Modal>
       </div>
     </div>
   );
