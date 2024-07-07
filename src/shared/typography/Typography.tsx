@@ -1,36 +1,29 @@
 import classNames from 'classnames';
-
 import styles from './styles.module.scss';
 
-interface TypographyProps extends React.ComponentPropsWithoutRef<'p'> {
-  variant?: 'h1' | 'h2' | 'h3' | 'p';
-  size?: 'xs' | 'sm' | 'md';
-  weight?: 'thin' | 'normal' | 'semibold' | 'bold';
-  color?: 'primary' | 'secondary' | 'tertiary' | 'invert';
-}
+type TypographyTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+type TypographyVariant = 'h1' | 'h2' | 'h3' | 'p_12_regular' | 'p_14_regular' | 'p_16_regular' | 'p_16_medium';
 
-export const Typography = ({ variant = 'p', color = 'primary', size, weight, ...props }: TypographyProps) => {
-  const typographyClasses = classNames(
-    {
-      [styles[`${variant}`]]: variant,
-      [styles[`${size}`]]: size,
-      [styles[`${weight}`]]: weight,
-      [styles[`${color}`]]: color,
-    },
-    props.className,
-  );
+type TypographyProps<Tag extends TypographyTag> = React.ComponentProps<Tag> & {
+  variant: TypographyVariant;
+  tag?: TypographyTag;
+  color?: 'primary' | 'secondary' | 'tertiary' | 'invert';
+};
+
+export const Typography = <Tag extends TypographyTag = 'p'>({
+  variant,
+  tag = 'p',
+  color = 'primary',
+  children,
+  className,
+  ...props
+}: TypographyProps<Tag>) => {
+  const Component = tag;
+  const classes = classNames(styles[variant], styles[color], className);
 
   return (
-    <>
-      {variant.startsWith('h') ? (
-        <h1 className={typographyClasses} {...props}>
-          {props.children}
-        </h1>
-      ) : (
-        <span className={typographyClasses} {...props}>
-          {props.children}
-        </span>
-      )}
-    </>
+    <Component className={classes} {...props}>
+      {children}
+    </Component>
   );
 };

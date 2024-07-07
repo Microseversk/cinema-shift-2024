@@ -12,15 +12,21 @@ export const Header = ({ ...props }: HeaderProps) => (
       </li>
       <li>
         <User />
-        <Typography color="secondary">Профиль</Typography>
+        <Typography variant="p_16_medium" color="secondary">
+          Профиль
+        </Typography>
       </li>
       <li>
         <Ticket />
-        <Typography color="secondary">Билеты</Typography>
+        <Typography variant="p_16_medium" color="secondary">
+          Билеты
+        </Typography>
       </li>
       <li>
         <Exit />
-        <Typography color="secondary">Выйти</Typography>
+        <Typography variant="p_16_medium" color="secondary">
+          Выйти
+        </Typography>
       </li>
     </nav>
   </header>

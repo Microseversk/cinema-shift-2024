@@ -20,7 +20,7 @@ export const FilmShowTimes = ({ seances, onChangeSeanceTime, choosedSeanceTime }
     <div>
       {hallsSchedule.map((hall, index) => (
         <div key={index} className={styles.hall_wrapper}>
-          <Typography weight="thin" size="xs" color="secondary">
+          <Typography variant="p_14_regular" color="secondary">
             {hall.name}
           </Typography>
           <div className={styles.halls_time_wrapper}>

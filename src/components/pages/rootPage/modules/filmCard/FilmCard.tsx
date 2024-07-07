@@ -21,20 +21,19 @@ export const FilmCard = ({ film }: FilmCardProps) => {
         releaseDate={film.releaseDate}
       />
       <div>
-        <Typography variant="h3">{film?.name}</Typography>
-        <Typography size="sm" color="tertiary" weight="thin">
+        <Typography tag="h3" variant="h3">
           {film?.name}
         </Typography>
       </div>
       <div>
         <FilmRating rating={Number(film.userRatings.kinopoisk)} />
-        <Typography size="sm" weight="thin" color="tertiary">
+        <Typography variant="p_14_regular" color="tertiary">
           Кинопоиск - {film.userRatings.kinopoisk}
         </Typography>
       </div>
       <Link to={NAVIGATE_ROUTES.FILM_PAGE_ID(film.id)}>
         <Button fullWidth variant="contained" color="primary">
-          <Typography weight="semibold" color="invert">
+          <Typography variant="p_16_medium" color="invert">
             Подробнее
           </Typography>
         </Button>

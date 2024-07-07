@@ -16,9 +16,7 @@ export const Tabs = ({ activeTab, tabs, onTabClick }: TabsProps) => {
     <div className={styles.tabs_container}>
       {tabs.map((tab) => (
         <div key={tab} className={tab === activeTab ? styles.tab_active : styles.tab} onClick={() => onTabChange(tab)}>
-          <Typography weight="thin" size="sm">
-            {tab}
-          </Typography>
+          <Typography variant="p_14_regular">{tab}</Typography>
         </div>
       ))}
     </div>

@@ -13,23 +13,35 @@ export const FilmPage = () => {
   const { data: schedules, isLoading: isScheduleLoading } = useGetFilmScheduleByIdQuery(id ? id : '');
 
   if (isFilmLoading || isScheduleLoading) {
-    return <Typography variant="h2">Загрузка...</Typography>;
+    return (
+      <Typography tag="h1" variant="h1">
+        Загрузка...
+      </Typography>
+    );
   }
 
   if (!film) {
-    return <Typography variant="h2">Фильма не найдено</Typography>;
+    return (
+      <Typography tag="h2" variant="h2">
+        Фильма не найдено
+      </Typography>
+    );
   }
 
   return (
     <div className={styles.film_page_wrapper}>
       <Link to={NAVIGATE_ROUTES.ROOT_PAGE}>
-        <Typography className={styles.arrow}>{'<'} Назад</Typography>
+        <Typography variant="p_16_medium" className={styles.arrow}>
+          {'<'} Назад
+        </Typography>
       </Link>
       <FilmInfo film={film} />
       {schedules?.length ? (
         <ChooseTicketSection schedules={schedules} />
       ) : (
-        <Typography variant="h2">Показы отсутствуют</Typography>
+        <Typography tag="h2" variant="h2">
+          Показы отсутствуют
+        </Typography>
       )}
     </div>
   );

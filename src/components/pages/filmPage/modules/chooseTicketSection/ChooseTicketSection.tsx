@@ -34,7 +34,9 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
             });
           }}
         />
-        <Typography variant="h2">Расписание</Typography>
+        <Typography tag="h2" variant="h2">
+          Расписание
+        </Typography>
         <FilmShowTimes
           seances={choosedDay.seances}
           choosedSeanceTime={choosedTime}
@@ -42,7 +44,9 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
         />
       </div>
       <div>
-        <Typography variant="h2">Выбор места</Typography>
+        <Typography tag="h2" variant="h2">
+          Выбор места
+        </Typography>
         <FilmShowPlaces places={choosedTime.hall.places} />
       </div>
       <div></div>

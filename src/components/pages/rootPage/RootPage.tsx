@@ -9,7 +9,9 @@ export const RootPage = () => {
 
   return (
     <>
-      <Typography variant="h2">Афиша</Typography>
+      <Typography tag="h2" variant="h2">
+        Афиша
+      </Typography>
       <div className={styles.cards_wrapper}>
         {isLoading ? (
           <>

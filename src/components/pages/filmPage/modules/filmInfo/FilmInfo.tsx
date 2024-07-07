@@ -18,14 +18,16 @@ export const FilmInfo = ({ film }: FilmInfoProps) => (
       releaseDate={film.releaseDate}
     />
     <div>
-      <Typography variant="h1">{film.name}</Typography>
+      <Typography tag="h1" variant="h1">
+        {film.name}
+      </Typography>
       <div>
         <FilmRating rating={Number(film.userRatings.kinopoisk)} />
-        <Typography size="sm" weight="thin" color="tertiary">
+        <Typography variant="p_14_regular" color="tertiary">
           Kinopoisk - {film.userRatings.kinopoisk}
         </Typography>
       </div>
-      <Typography weight="thin" color="secondary">
+      <Typography variant="p_16_regular" color="secondary">
         {film.description}
       </Typography>
     </div>

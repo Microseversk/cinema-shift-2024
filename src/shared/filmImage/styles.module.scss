@@ -23,3 +23,14 @@
   background-color: $bg-secondary;
   padding: 8px 16px;
 }
+
+.genre_text {
+  font-weight: $weight-medium;
+  font-size: $size-sm;
+  text-transform: capitalize;
+}
+
+.country_text {
+  font-weight: $weight-regular;
+  font-size: $size-sm;
+}
