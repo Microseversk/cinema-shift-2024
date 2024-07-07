@@ -23,7 +23,9 @@ export const FilmShowPlaces = ({
     {placeRows &&
       placeRows.map((row, rowIndex) => (
         <div className={styles.places_row} key={rowIndex}>
-          <Typography variant="p_14_regular">{rowIndex + 1}</Typography>
+          <Typography variant="p_14_regular" className={styles.row_number}>
+            {rowIndex + 1}
+          </Typography>
           {row.map((place, columnIndex) => (
             <div className={styles.btn_place_wrapper} key={columnIndex}>
               <Button

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FilmShowPlaces, FilmShowTimes } from '..';
 
 import { HALLS_MAP } from '@src/utils/constants/hallsMap';
+import { MONTH_MAP } from '@src/utils/constants/monthMap';
 import styles from './styles.module.scss';
 
 export interface ChoosedPlace extends Omit<Place, 'type'> {
@@ -98,7 +99,8 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
                 Дата и время
               </Typography>
               <Typography variant="p_16_regular">
-                {choosedDay.date} {choosedTime.time}
+                {choosedDay.date.split('.')[0]} {MONTH_MAP[choosedDay.date.split('.')[1]]}{' '}
+                {choosedTime.time}
               </Typography>
             </div>
             <div>
@@ -112,7 +114,7 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
               ))}
             </div>
             <Typography tag="h3" variant="h3">
-              Сумма:{choosedPlaces.reduce((a, b) => a + b.price, 0)}
+              Сумма:{choosedPlaces.reduce((a, b) => a + b.price, 0)} {' ₽'}
             </Typography>
             <Button>Купить</Button>
           </div>
