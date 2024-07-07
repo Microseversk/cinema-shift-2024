@@ -1,6 +1,7 @@
 import { ScheduleSeance } from '@src/@types/api';
 import { Button, Typography } from '@src/shared';
 
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 interface FilmShowTimesProps {
@@ -28,7 +29,10 @@ export const FilmShowTimes = ({ seances, onChangeSeanceTime, choosedSeanceTime }
               <Button
                 key={index}
                 variant="outlined"
-                className={`${seance.time === choosedSeanceTime.time && seance.hall.name === choosedSeanceTime.hall.name && styles.choosed_time} ${styles.btn_time}`}
+                className={classNames(styles.btn_time, {
+                  [styles.btn_choosed_time]:
+                    seance.time === choosedSeanceTime.time && seance.hall.name === choosedSeanceTime.hall.name,
+                })}
                 onClick={() =>
                   onChangeSeanceTime({
                     hall: seance.hall,

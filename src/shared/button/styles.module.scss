@@ -1,48 +1,95 @@
 @import '@styles/variables.scss';
 
-.full_width {
-  width: 100%;
-}
-
 .button {
-  border-radius: $btn-radius;
   padding: $btn-paddings;
-  transition-duration: $transition-time;
+  border-radius: $btn-radius;
+  transition: all $transition-time ease-out;
   cursor: pointer;
-  border: none;
+
+  font-size: $size-md;
+  font-weight: $weight-semibold;
+
+  &:disabled {
+    cursor: auto;
+  }
 }
 
 .contained {
-  &.primary {
-    background-color: $bg-brand;
+  background-color: $bg-brand;
+  color: $text-invert;
 
-    &:hover {
-      background-color: $bg-hover-primary;
-    }
+  &:hover {
+    background-color: $bg-hover-primary;
   }
-  &.secondary {
-    background-color: $bg-secondary;
 
-    &:hover {
-      opacity: 0.7;
-    }
+  &:disabled {
+    background-color: $bg-brand-extra-light;
   }
 }
 
 .outlined {
-  border: $border-width solid $bg-brand;
-  background-color: transparent;
+  border: 1px solid $bg-brand;
+  color: $text-primary;
+
+  &:hover {
+    background-color: $bg-tertiary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .text {
-  padding: 0;
   border: none;
-  background-color: inherit;
+  color: $text-brand;
+
+  &:hover {
+    background-color: $bg-tertiary;
+  }
 }
 
 .link {
-  padding: 0;
   border: none;
+  color: $text-brand;
+  padding: 0;
   text-decoration: underline;
-  background-color: inherit;
+
+  &:hover {
+    color: $bg-hover-primary;
+  }
+}
+
+.full_width {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+  & span {
+    color: transparent;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border-top: 2px solid $border-light;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spinner 1s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

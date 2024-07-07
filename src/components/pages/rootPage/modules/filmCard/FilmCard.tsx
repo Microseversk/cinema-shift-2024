@@ -32,11 +32,7 @@ export const FilmCard = ({ film }: FilmCardProps) => {
         </Typography>
       </div>
       <Link to={NAVIGATE_ROUTES.FILM_PAGE_ID(film.id)}>
-        <Button fullWidth variant="contained" color="primary">
-          <Typography variant="p_16_medium" color="invert">
-            Подробнее
-          </Typography>
-        </Button>
+        <Button fullWidth>Подробнее</Button>
       </Link>
     </div>
   );

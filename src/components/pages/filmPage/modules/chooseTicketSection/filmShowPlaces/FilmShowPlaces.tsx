@@ -19,9 +19,7 @@ export const FilmShowPlaces = ({ places: placeRows }: FilmShowPlacesProps) => {
             <Typography variant="p_14_regular">{index + 1}</Typography>
             {row.map((place, index) => (
               <Button className={styles.place} key={index} disabled={place.type === 'BLOCKED'}>
-                <Typography variant="p_14_regular" color="invert">
-                  {index + 1}
-                </Typography>
+                {index + 1}
               </Button>
             ))}
           </div>

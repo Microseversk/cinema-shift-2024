@@ -2,29 +2,27 @@ import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+interface ButtonProps extends React.ComponentProps<'button'> {
   variant?: 'contained' | 'outlined' | 'link' | 'text';
-  color?: 'primary' | 'secondary';
-  loading?: React.ReactNode;
-  icon?: React.ReactNode;
+  loading?: boolean;
   fullWidth?: boolean;
 }
 
-export const Button = ({ variant = 'contained', color = 'primary', fullWidth, className, ...props }: ButtonProps) => {
-  const buttonClasses = classNames(
+export const Button = ({ variant = 'contained', loading, fullWidth, className, ...props }: ButtonProps) => {
+  const classes = classNames(
     styles.button,
+    styles[variant],
     {
-      [styles[`${variant}`]]: variant,
-      [styles[`${color}`]]: color,
+      [styles.loading]: loading,
       [styles.full_width]: fullWidth,
     },
     className,
   );
 
   return (
-    <button {...props} className={buttonClasses} type={props.type || 'button'}>
-      {props.icon}
-      {props.loading ? props.loading : props.children}
+    <button disabled={props.disabled} className={classes} type={props.type || 'button'} {...props}>
+      <span>{props.children}</span>
+      {loading && <span />}
     </button>
   );
 };
