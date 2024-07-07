@@ -8,12 +8,20 @@ interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
 }
 
 export const Input = ({ isError, lines = 1, ...props }: InputProps) => {
-  const inputClasses = classNames(styles['input'], { [styles['input_error']]: isError }, props.className);
+  const inputClasses = classNames(
+    styles['input'],
+    { [styles['input_error']]: isError },
+    props.className,
+  );
 
   return (
     <>
       {lines > 1 ? (
-        <textarea className={inputClasses} rows={lines} {...(props as React.ComponentPropsWithoutRef<'textarea'>)} />
+        <textarea
+          className={inputClasses}
+          rows={lines}
+          {...(props as React.ComponentPropsWithoutRef<'textarea'>)}
+        />
       ) : (
         <input className={inputClasses} {...props} />
       )}

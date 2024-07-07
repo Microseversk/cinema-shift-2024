@@ -1,4 +1,4 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .h1 {
   font-size: $size-h1;
@@ -38,12 +38,15 @@
 .primary {
   color: $text-primary;
 }
+
 .secondary {
   color: $text-secondary;
 }
+
 .tertiary {
   color: $text-tertiary;
 }
+
 .invert {
   color: $text-invert;
 }

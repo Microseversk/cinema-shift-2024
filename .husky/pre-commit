@@ -1,3 +1,6 @@
-npm run lint
+npx lint-staged --no-stash
+
+
+exit
 
 

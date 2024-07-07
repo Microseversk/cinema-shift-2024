@@ -8,7 +8,13 @@ interface ButtonProps extends React.ComponentProps<'button'> {
   fullWidth?: boolean;
 }
 
-export const Button = ({ variant = 'contained', loading, fullWidth, className, ...props }: ButtonProps) => {
+export const Button = ({
+  variant = 'contained',
+  loading,
+  fullWidth,
+  className,
+  ...props
+}: ButtonProps) => {
   const classes = classNames(
     styles.button,
     styles[variant],

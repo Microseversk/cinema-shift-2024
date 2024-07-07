@@ -1,4 +1,4 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .tabs_container {
   display: flex;
@@ -16,9 +16,8 @@
   transition: background-color $transition-time;
   margin: 2px;
   padding: 10px 16px;
-}
 
-.tab_active {
-  @extend .tab;
-  background-color: $bg-primary;
+  &.tab_active {
+    background-color: $bg-primary;
+  }
 }

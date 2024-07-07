@@ -11,7 +11,14 @@ interface FilmImageProps extends React.ComponentPropsWithoutRef<'div'> {
   releaseDate: string;
 }
 
-export const FilmImage = ({ image, alt, country, releaseDate, genre, ...props }: FilmImageProps) => (
+export const FilmImage = ({
+  image,
+  alt,
+  country,
+  releaseDate,
+  genre,
+  ...props
+}: FilmImageProps) => (
   <div {...props} className={classNames(styles.wrapper, props.className)}>
     <img src={image} alt={alt} className={styles.img} />
     <div className={styles.info}>

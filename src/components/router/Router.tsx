@@ -1,5 +1,10 @@
 import { ROUTES } from '@src/utils';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 import { Layout } from '..';
 import { FilmPage, RootPage } from '../pages';
 

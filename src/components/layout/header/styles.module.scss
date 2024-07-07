@@ -1,5 +1,5 @@
-@import '@styles/variables.scss';
-@import '@styles/mixins.scss';
+@import '@styles/variables';
+@import '@styles/mixins';
 
 .header {
   width: 100%;
@@ -34,15 +34,18 @@
       transition: $transition-time;
       color: $text-brand;
     }
+
     &:hover > svg > path {
       transition: $transition-time;
       fill: $text-brand;
     }
   }
+
   & li:not(:first-child) img {
     width: $nav-item-icon-size;
     height: $nav-item-icon-size;
   }
+
   & li:last-child {
     margin-left: auto;
   }

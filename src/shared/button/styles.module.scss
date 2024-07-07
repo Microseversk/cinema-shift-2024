@@ -1,11 +1,10 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .button {
   padding: $btn-paddings;
   border-radius: $btn-radius;
   transition: all $transition-time ease-out;
   cursor: pointer;
-
   font-size: $size-md;
   font-weight: $weight-semibold;
 
@@ -66,9 +65,11 @@
 
 .loading {
   position: relative;
+
   & span {
     color: transparent;
   }
+
   &::after {
     content: '';
     position: absolute;

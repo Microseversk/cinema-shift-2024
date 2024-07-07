@@ -10,7 +10,11 @@ interface FilmShowTimesProps {
   choosedSeanceTime: Omit<ScheduleSeance, 'payedTickets'>;
 }
 
-export const FilmShowTimes = ({ seances, onChangeSeanceTime, choosedSeanceTime }: FilmShowTimesProps) => {
+export const FilmShowTimes = ({
+  seances,
+  onChangeSeanceTime,
+  choosedSeanceTime,
+}: FilmShowTimesProps) => {
   const hallsSchedule = [
     { seances: seances.filter((seance) => seance.hall.name === 'Red'), name: 'Красный зал' },
     { seances: seances.filter((seance) => seance.hall.name === 'Green'), name: 'Зелёный зал' },
@@ -31,7 +35,8 @@ export const FilmShowTimes = ({ seances, onChangeSeanceTime, choosedSeanceTime }
                 variant="outlined"
                 className={classNames(styles.btn_time, {
                   [styles.btn_choosed_time]:
-                    seance.time === choosedSeanceTime.time && seance.hall.name === choosedSeanceTime.hall.name,
+                    seance.time === choosedSeanceTime.time &&
+                    seance.hall.name === choosedSeanceTime.hall.name,
                 })}
                 onClick={() =>
                   onChangeSeanceTime({
