@@ -15,6 +15,18 @@ interface ChooseTicketSectionProps {
   schedules: Schedule[];
 }
 
+const placesObjectToArray = (places: ChoosedPlace[]) => {
+  return Object.entries(
+    places.slice().reduce((acc: { [key: number]: number[] }, place) => {
+      if (!acc[place.row]) {
+        acc[place.row] = [];
+      }
+      acc[place.row].push(place.column);
+      return acc;
+    }, []),
+  );
+};
+
 export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => {
   const [choosedDay, setChoosedDay] = useState<Schedule>(schedules[0]);
   const [choosedTime, setChoosedTime] = useState<Omit<ScheduleSeance, 'payedTickets'>>({
@@ -93,8 +105,11 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
               <Typography variant="p_12_regular" color="tertiary">
                 Места
               </Typography>
-
-              <Typography variant="p_16_regular"></Typography>
+              {placesObjectToArray(choosedPlaces).map((i) => (
+                <Typography variant="p_16_regular">
+                  {i[0]} ряд - {i[1].sort().join(', ')}
+                </Typography>
+              ))}
             </div>
             <Typography tag="h3" variant="h3">
               Сумма:{choosedPlaces.reduce((a, b) => a + b.price, 0)}
