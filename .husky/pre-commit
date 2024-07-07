@@ -1,6 +1,5 @@
 npx lint-staged --no-stash
 
 
-exit
 
 
