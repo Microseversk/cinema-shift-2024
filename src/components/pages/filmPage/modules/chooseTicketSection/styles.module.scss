@@ -1,6 +1,26 @@
-.schedule {
+.choose_ticket_section_wrapper {
   display: flex;
   flex-direction: column;
+  row-gap: 12px;
+}
+
+.date {
   max-width: max-content;
-  gap: 12px;
+}
+
+.places {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+}
+
+.choosed_tickets_wrapper {
+  max-width: 40%;
+  flex-grow: 1;
+  grid-area: buy;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: end;
 }

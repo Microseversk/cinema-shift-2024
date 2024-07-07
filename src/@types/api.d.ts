@@ -14,7 +14,7 @@ export interface Country {
   code: string;
   code2: string;
 }
-
+export type HallName = 'Red' | 'Green' | 'Blue';
 export type AgeRating = 'G' | 'PG' | 'PG13' | 'R' | 'NC17';
 export type FilmId = string;
 export interface Film {
@@ -47,7 +47,7 @@ export interface Place {
 }
 
 export interface FilmHall {
-  name: 'Red' | 'Green' | 'Blue';
+  name: HallName;
   places: Place[][];
   payedTickets: Ticket[];
 }
