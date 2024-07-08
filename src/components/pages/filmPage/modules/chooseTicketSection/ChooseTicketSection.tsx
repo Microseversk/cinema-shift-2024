@@ -65,8 +65,8 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
               <Typography variant="p_12_regular" color="tertiary">
                 Места
               </Typography>
-              {actions.placesObjectToArray(state.choosedPlaces).map((i) => (
-                <Typography variant="p_16_regular">
+              {actions.placesObjectToArray(state.choosedPlaces).map((i, index) => (
+                <Typography variant="p_16_regular" key={index}>
                   {i[0]} ряд - {i[1].sort().join(', ')}
                 </Typography>
               ))}

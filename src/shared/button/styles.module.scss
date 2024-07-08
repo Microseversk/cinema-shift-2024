@@ -1,6 +1,7 @@
 @import '@styles/variables';
 
 .button {
+  width: max-content;
   padding: $btn-paddings;
   border-radius: $btn-radius;
   transition: all $transition-time ease-out;

@@ -111,3 +111,16 @@ export interface PostPaymentBody {
     column: number;
   };
 }
+
+export interface User {
+  phone: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  email: string;
+  city: string;
+}
+
+export interface GetUserSessionResponse extends ResponseBase {
+  user: User;
+}

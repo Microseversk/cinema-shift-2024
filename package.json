@@ -20,6 +20,7 @@
     "*.scss": "stylelint --fix"
   },
   "dependencies": {
+    "@siberiacancode/reactuse": "^0.0.50",
     "@tanstack/react-query": "^5.49.2",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",

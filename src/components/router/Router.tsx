@@ -6,14 +6,20 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { Layout } from '../layout/Layout';
-import { FilmPage, RootPage } from '../pages';
+import { FilmPage, LoginPage, ProfilePage, RootPage, TicketsPage } from '../pages';
+import { PrivateRoute } from './PrivateRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path={ROUTES.MAIN} element={<RootPage />} />
       <Route path={ROUTES.FILM_ID} element={<FilmPage />} />
-      <Route path="*" element={<>404</>} />
+      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+      <Route element={<PrivateRoute />}>
+        <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+        <Route path={ROUTES.TICKETS} element={<TicketsPage />} />
+        <Route path="*" element={<>404</>} />
+      </Route>
     </Route>,
   ),
 );
