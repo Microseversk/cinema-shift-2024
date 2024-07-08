@@ -30,12 +30,12 @@
     cursor: pointer;
     gap: 16px;
 
-    &:hover > span {
+    &:hover > a > * {
       transition: $transition-time;
       color: $text-brand;
     }
 
-    &:hover > svg > path {
+    &:hover > a > svg > path {
       transition: $transition-time;
       fill: $text-brand;
     }

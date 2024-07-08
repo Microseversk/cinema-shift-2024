@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { Layout } from '..';
+import { Layout } from '../layout/Layout';
 import { FilmPage, RootPage } from '../pages';
 
 const router = createBrowserRouter(

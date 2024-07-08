@@ -1,10 +1,15 @@
 import { Button, Input, Typography } from '@src/shared';
 
+import { FormEvent } from 'react';
 import styles from './styles.module.scss';
 
-export const BuyTicketsForm = () => {
+interface BuyTicketsFormProps {
+  onSubmit: (e: FormEvent) => void;
+}
+
+export const BuyTicketsForm = ({ onSubmit }: BuyTicketsFormProps) => {
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <Typography tag="h2" variant="h2">
         Введите ваши данные
       </Typography>
@@ -14,7 +19,9 @@ export const BuyTicketsForm = () => {
       <Input label="Телефон*" />
       <Input label="Email" />
       <Input label="Город" />
-      <Button fullWidth>Продолжить</Button>
+      <Button type="submit" fullWidth>
+        Продолжить
+      </Button>
     </form>
   );
 };

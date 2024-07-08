@@ -1,9 +1,10 @@
 import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
-import { Typography } from '@src/shared';
+import { ArrowSmallLeftIcon, Typography } from '@src/shared';
 import { Link, useParams } from 'react-router-dom';
-import { FilmInfo } from './modules';
 
+import { Back } from '@src/shared/Back/Back';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { FilmInfo } from './modules';
 import { ChooseTicketSection } from './modules/chooseTicketSection/ChooseTicketSection';
 import styles from './styles.module.scss';
 
@@ -33,9 +34,11 @@ export const FilmPage = () => {
   return (
     <div className={styles.film_page_wrapper}>
       <Link to={NAVIGATE_ROUTES.ROOT_PAGE}>
-        <Typography variant="p_16_medium" className={styles.arrow}>
-          {'<'} Назад
-        </Typography>
+        <Back icon={<ArrowSmallLeftIcon />}>
+          <Typography variant="p_16_medium" color="tertiary">
+            Назад
+          </Typography>
+        </Back>
       </Link>
       <FilmInfo film={film} />
       {schedules?.length ? (

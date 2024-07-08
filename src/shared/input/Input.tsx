@@ -10,9 +10,9 @@ interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   message?: string;
 }
 
-export const Input = ({ isError, label, message, id, ...props }: InputProps) => {
+export const Input = ({ isError, label, message, className, id, ...props }: InputProps) => {
   const _id = useId();
-  const inputClasses = classNames(styles.input, { [styles.input_error]: isError }, props.className);
+  const inputClasses = classNames(styles.input, { [styles.input_error]: isError }, className);
   const messageClasses = classNames(styles.message, { [styles.message_error]: isError && message });
 
   return (

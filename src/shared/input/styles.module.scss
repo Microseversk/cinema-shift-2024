@@ -5,6 +5,7 @@
   border-radius: $input-radius;
   border: 1px solid $border-light;
   padding: $input-paddings;
+  font-weight: $weight-regular;
 
   &:focus {
     outline: none;
