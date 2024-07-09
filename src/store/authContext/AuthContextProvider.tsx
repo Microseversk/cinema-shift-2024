@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { authContext } from './authContext';
 
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUser] = useState<User>();
   const { data } = useGetUserSessionQuery();
 
   useEffect(() => {
     if (data?.data?.user) {
-      setUser(data.data.user);
+      setUser(data.data?.user);
     }
   }, [data]);
 

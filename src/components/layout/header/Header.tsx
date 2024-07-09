@@ -9,8 +9,13 @@ import styles from './styles.module.scss';
 interface HeaderProps extends React.ComponentPropsWithoutRef<'header'> {}
 
 export const Header = ({ ...props }: HeaderProps) => {
-  const { user } = useContext(authContext);
-  console.log(user);
+  const { user, setUser } = useContext(authContext);
+
+  const handleLogout = () => {
+    setUser(undefined);
+    window.localStorage.removeItem('token');
+  };
+
   return (
     <header className={styles.header} {...props}>
       <nav className={styles.nav}>
@@ -41,7 +46,7 @@ export const Header = ({ ...props }: HeaderProps) => {
         )}
         {user ? (
           <li>
-            <NavLinkItem to={NAVIGATE_ROUTES.LOGIN_PAGE}>
+            <NavLinkItem to={NAVIGATE_ROUTES.LOGIN_PAGE} onClick={handleLogout}>
               <Exit />
               <Typography variant="p_16_medium" color="secondary">
                 Выйти

@@ -1,3 +1,4 @@
+export * from './auth';
 export * from './film';
 export * from './orders';
 export * from './payment';

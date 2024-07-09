@@ -1,10 +1,52 @@
-import { useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import styles from './styles.module.scss';
 
+import { SignInDto } from '@src/@types/api';
+import { usePostOtpQuery } from '@src/hooks/usePostOtpQuery';
+import { usePostUserSignInQuery } from '@src/hooks/usePostUserSignInQuery';
 import { Button, Input, Typography } from '@src/shared';
+import { authContext } from '@src/store/authContext/authContext';
+import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
-  const [writingOtp, setWritingOtp] = useState<string | undefined>();
+  const navigate = useNavigate();
+  const { setUser } = useContext(authContext);
+  const [isWritingOtp, setIsWritingOtp] = useState(false);
+  const { register, handleSubmit, getValues } = useForm<SignInDto>();
+  const mutateOtp = usePostOtpQuery();
+  const mutateLogin = usePostUserSignInQuery();
+
+  const onSubmitLogin: SubmitHandler<SignInDto> = (data) => {
+    mutateLogin.mutate(
+      {
+        params: data,
+      },
+      {
+        onSuccess: (data) => {
+          window.localStorage.setItem('token', data.data.token);
+          setUser(data.data.user);
+          navigate(NAVIGATE_ROUTES.ROOT_PAGE);
+        },
+      },
+    );
+  };
+
+  const onSubmitPhone = (e: FormEvent) => {
+    e.preventDefault();
+
+    mutateOtp.mutate(
+      {
+        params: {
+          phone: getValues('phone'),
+        },
+      },
+      {
+        onSuccess: () => setIsWritingOtp(true),
+      },
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -12,19 +54,45 @@ export const LoginPage = () => {
         Авторизация
       </Typography>
       <Typography variant="p_16_regular">
-        Введите номер телефона для входа в личный кабинет
+        {!isWritingOtp
+          ? 'Введите номер телефона для входа в личный кабинет'
+          : 'Введите проверочный код для входа в личный кабинет'}
       </Typography>
-      <form id="login_form" className={styles.form}>
-        <Input placeholder="Телефон" />
-        {writingOtp && <Input placeholder="Проверочный код" />}
-      </form>
-      <Button form="login_form" onClick={() => setWritingOtp('1234')}>
-        {writingOtp ? 'Войти' : 'Продолжить'}
-      </Button>
-      {writingOtp && (
-        <Typography variant="p_14_regular" color="tertiary">
-          Отправить код повторно через {'60'} сек
-        </Typography>
+      {!isWritingOtp ? (
+        <>
+          <form id="phone_form" className={styles.form}>
+            <Input
+              placeholder="Телефон"
+              {...register('phone', {
+                required: true,
+              })}
+            />
+          </form>
+          <Button
+            form="phone_form"
+            type="submit"
+            loading={mutateOtp.isPending}
+            onClick={onSubmitPhone}
+          >
+            Продолжить
+          </Button>
+        </>
+      ) : (
+        <>
+          <form id="login_form" className={styles.form} onSubmit={handleSubmit(onSubmitLogin)}>
+            <Input
+              disabled
+              placeholder="Телефон"
+              {...register('phone', {
+                required: true,
+              })}
+            />
+            <Input placeholder="Проверочный код" {...register('code', { required: true })} />
+          </form>
+          <Button form="login_form" type="submit" loading={mutateLogin.isPending}>
+            Войти
+          </Button>
+        </>
       )}
     </div>
   );

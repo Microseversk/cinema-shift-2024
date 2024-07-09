@@ -124,3 +124,21 @@ export interface User {
 export interface GetUserSessionResponse extends ResponseBase {
   user: User;
 }
+
+export interface SignInDto {
+  phone: string;
+  code: number;
+}
+
+export interface postSignInResponse extends ResponseBase {
+  user: User;
+  token: string;
+}
+
+export interface CreateOtpDto {
+  phone: string;
+}
+
+export interface OtpResponse extends ResponseBase {
+  retryDelay: number;
+}

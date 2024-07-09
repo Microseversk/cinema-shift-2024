@@ -5,5 +5,5 @@ import { useQuery } from '@tanstack/react-query';
 export const useGetUserSessionQuery = (config?: RequestConfig) =>
   useQuery({
     queryFn: () => getUserSession(config),
-    queryKey: ['userSession', config?.config?.headers?.Authorization],
+    queryKey: ['userSession', window.localStorage.getItem('token')],
   });
