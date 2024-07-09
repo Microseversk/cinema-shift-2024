@@ -114,9 +114,9 @@ export interface PostPaymentBody {
 
 export interface User {
   phone: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
+  firstname: string;
+  middlename: string;
+  lastname: string;
   email: string;
   city: string;
 }
@@ -141,4 +141,15 @@ export interface CreateOtpDto {
 
 export interface OtpResponse extends ResponseBase {
   retryDelay: number;
+}
+
+export interface UpdateProfileProfileDto extends Omit<User, 'phone'> {}
+
+export interface UpdateProfileDto {
+  profile: UpdateProfileProfileDto;
+  phone: string;
+}
+
+export interface UpdateProfileResponse extends ResponseBase {
+  user: User;
 }
