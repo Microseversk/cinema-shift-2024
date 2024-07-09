@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { Back } from '@src/shared/Back/Back';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { FilmPageSkeleton } from './filmPageSkeleton/FilmPageSkeleton';
 import { FilmInfo } from './modules';
 import { ChooseTicketSection } from './modules/chooseTicketSection/ChooseTicketSection';
 import styles from './styles.module.scss';
@@ -16,11 +17,7 @@ export const FilmPage = () => {
   );
 
   if (isFilmLoading || isScheduleLoading) {
-    return (
-      <Typography tag="h1" variant="h1">
-        Загрузка...
-      </Typography>
-    );
+    return <FilmPageSkeleton />;
   }
 
   if (!film) {

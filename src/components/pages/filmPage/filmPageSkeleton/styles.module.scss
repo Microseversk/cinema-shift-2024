@@ -1,0 +1,20 @@
+.film_page_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 32px;
+}
+
+.img {
+  border-radius: 8px 8px 0;
+  aspect-ratio: 1/1;
+}
+
+.tabs {
+  border-radius: 16px;
+}
