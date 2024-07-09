@@ -11,13 +11,20 @@ export const OrdersPage = () => {
     return <>Loading...</>;
   }
 
+  if (!data?.data.orders.length) {
+    return (
+      <Typography tag="h2" variant="h2">
+        Вы не совершали покупок
+      </Typography>
+    );
+  }
   return (
     <div className={styles.wrapper}>
       <Typography tag="h2" variant="h2">
         Билеты
       </Typography>
-      {data?.data.orders
-        .filter((order) => order.status === 'PAYED')
+      {data?.data?.orders
+        .slice()
         .reverse()
         .map((order) => <OrderCard key={order._id} order={order} />)}
     </div>

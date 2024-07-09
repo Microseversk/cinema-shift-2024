@@ -30,7 +30,6 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
   });
 
   const onSubmit: SubmitHandler<PostPaymentBody> = (data) => {
-    console.log(data);
     mutate(
       {
         params: data,

@@ -4,7 +4,6 @@ import { usePutOrderCancelQuery } from '@src/hooks/usePutOrderCancelQuery';
 import { Button, Chips, Typography } from '@src/shared';
 import { QuestionIcon } from '@src/shared/icons/QuestionIcon';
 import { Modal } from '@src/shared/modal/Modal';
-import classNames from 'classnames';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 
@@ -14,7 +13,7 @@ interface OrderCardProps {
 
 export const OrderCard = ({ order }: OrderCardProps) => {
   // TODO: Убрать, когда в заказах будет прилетать название фильма
-  const { data } = useGetFilmByIdQuery(order.tickets[0].filmId);
+  const { data } = useGetFilmByIdQuery(order.tickets[0].filmId || '');
   const [isDeleting, setIsDeleting] = useState(false);
   const { mutate, isPending } = usePutOrderCancelQuery();
 
@@ -31,7 +30,20 @@ export const OrderCard = ({ order }: OrderCardProps) => {
       }, []),
   );
 
-  console.log(order);
+  if (order.status === 'CANCELED') {
+    return (
+      <div className={styles.card}>
+        <div className={styles.footer}>
+          <Chips size="large" className={styles.chips_red}>
+            Отменено
+          </Chips>
+          <Typography variant="p_14_regular" color="tertiary">
+            Код билета {order.orderNumber}
+          </Typography>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -84,13 +96,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
           ))}
         </div>
         <div className={styles.footer}>
-          <Chips
-            size="large"
-            className={classNames({
-              [styles.chips_green]: order.status === 'PAYED',
-              [styles.chips_red]: order.status === 'CANCELED',
-            })}
-          >
+          <Chips size="large" className={styles.chips_green}>
             {order.status === 'PAYED' ? 'Оплачен' : 'Отменено'}
           </Chips>
           <Typography variant="p_14_regular" color="tertiary">

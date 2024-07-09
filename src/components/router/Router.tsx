@@ -18,8 +18,8 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
         <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
-        <Route path="*" element={<>404</>} />
       </Route>
+      <Route path="*" element={<>404</>} />
     </Route>,
   ),
 );
