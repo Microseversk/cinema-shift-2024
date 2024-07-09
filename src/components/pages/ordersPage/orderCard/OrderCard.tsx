@@ -97,7 +97,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
         </div>
         <div className={styles.footer}>
           <Chips size="large" className={styles.chips_green}>
-            {order.status === 'PAYED' ? 'Оплачен' : 'Отменено'}
+            Оплачено
           </Chips>
           <Typography variant="p_14_regular" color="tertiary">
             Код билета {order.orderNumber}
