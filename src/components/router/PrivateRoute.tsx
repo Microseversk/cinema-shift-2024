@@ -6,5 +6,5 @@ import { Navigate, Outlet } from 'react-router-dom';
 export const PrivateRoute = () => {
   const { user } = useContext(authContext);
 
-  return <>{user ? <Outlet /> : <Navigate to={NAVIGATE_ROUTES.LOGIN_PAGE} />}</>;
+  return <>{user ? <Outlet /> : <Navigate to={NAVIGATE_ROUTES.ROOT_PAGE} replace />}</>;
 };

@@ -26,7 +26,12 @@ export const Button = ({
   );
 
   return (
-    <button disabled={props.disabled} className={classes} type={props.type || 'button'} {...props}>
+    <button
+      disabled={props.disabled || loading}
+      className={classes}
+      type={props.type || 'button'}
+      {...props}
+    >
       <span>{props.children}</span>
       {loading && <span />}
     </button>

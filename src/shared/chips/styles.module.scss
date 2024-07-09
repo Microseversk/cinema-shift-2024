@@ -1,0 +1,38 @@
+@import '@styles/variables';
+
+.chips {
+  border-radius: 35px;
+  font-weight: $weight-semibold;
+  font-size: $size-sm;
+  color: #fff;
+}
+
+.small {
+  padding: 2px 8px;
+  font-size: $size-xs;
+}
+
+.medium {
+  padding: 2px 10px;
+}
+
+.large {
+  padding: 4px 12px;
+}
+
+.gray {
+  background-color: #414e62;
+}
+
+.red {
+  background-color: #f20d0d;
+}
+
+.green {
+  background-color: #39ac73;
+  color: #202b37;
+}
+
+.blue {
+  background-color: #0095ff;
+}

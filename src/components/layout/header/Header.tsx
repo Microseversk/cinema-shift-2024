@@ -35,7 +35,7 @@ export const Header = ({ ...props }: HeaderProps) => {
               </NavLinkItem>
             </li>
             <li>
-              <NavLinkItem to={NAVIGATE_ROUTES.TICKETS_PAGE}>
+              <NavLinkItem to={NAVIGATE_ROUTES.ORDERS_PAGE}>
                 <Ticket />
                 <Typography variant="p_16_medium" color="secondary">
                   Билеты

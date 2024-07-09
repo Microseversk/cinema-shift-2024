@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { Layout } from '../layout/Layout';
-import { FilmPage, LoginPage, ProfilePage, RootPage, TicketsPage } from '../pages';
+import { FilmPage, LoginPage, OrdersPage, ProfilePage, RootPage } from '../pages';
 import { PrivateRoute } from './PrivateRoute';
 
 const router = createBrowserRouter(
@@ -17,7 +17,7 @@ const router = createBrowserRouter(
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route element={<PrivateRoute />}>
         <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
-        <Route path={ROUTES.TICKETS} element={<TicketsPage />} />
+        <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
         <Route path="*" element={<>404</>} />
       </Route>
     </Route>,

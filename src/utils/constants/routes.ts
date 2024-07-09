@@ -2,6 +2,6 @@ export const ROUTES = {
   MAIN: '/',
   FILM_ID: '/film/:id',
   PROFILE: '/profile',
-  TICKETS: '/tickets',
+  ORDERS: '/orders',
   LOGIN: '/login',
 };

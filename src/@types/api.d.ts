@@ -106,10 +106,7 @@ export interface PostPaymentBody {
   person: CreatePaymentPerson;
   seance: FilmTicketSeance;
   debitCard: DebitCard;
-  tikcets: {
-    row: number;
-    column: number;
-  };
+  tickets: CreatePaymentTicketsDto[];
 }
 
 export interface User {
@@ -152,4 +149,22 @@ export interface UpdateProfileDto {
 
 export interface UpdateProfileResponse extends ResponseBase {
   user: User;
+}
+
+export interface CreatePaymentTicketsDto {
+  row: number;
+  column: number;
+}
+
+export interface CinemaOrder {
+  _id: string;
+  filmName: string;
+  orderNumber: number;
+  tickets: Ticket[];
+  phone: string;
+  status: 'PAYED' | 'CANCELED';
+}
+
+export interface OrdersResponse extends ResponseBase {
+  orders: CinemaOrder[];
 }

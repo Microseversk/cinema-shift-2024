@@ -42,7 +42,7 @@ export const FilmPage = () => {
       </Link>
       <FilmInfo film={film} />
       {schedules?.length ? (
-        <ChooseTicketSection schedules={schedules} />
+        <ChooseTicketSection schedules={schedules} filmId={id || ''} />
       ) : (
         <Typography tag="h2" variant="h2">
           Показы отсутствуют

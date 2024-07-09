@@ -6,7 +6,7 @@ export interface ChoosedPlace extends Omit<Place, 'type'> {
   column: number;
 }
 
-const placesObjectToArray = (places: ChoosedPlace[]) => {
+export const placesObjectToArray = (places: ChoosedPlace[]) => {
   return Object.entries(
     places.slice().reduce((acc: { [key: number]: number[] }, place) => {
       if (!acc[place.row]) {

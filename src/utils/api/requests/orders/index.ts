@@ -1,8 +1,10 @@
-import { PutOrdersCancelBody } from '@src/@types/api';
-import { api } from '@src/utils';
+import { OrdersResponse } from '@src/@types/api';
+import { api } from '../..';
 import { RequestConfig } from '../requestConfig';
 
-type putOrdersCancelConfig = RequestConfig<PutOrdersCancelBody>;
+export * from './cancel';
 
-export const putOrdersCancel = (config: putOrdersCancelConfig) =>
-  api.put('cinema/orders/cancel', config.params, config.config);
+type getOrdersConfig = RequestConfig;
+
+export const getOrders = (config?: getOrdersConfig) =>
+  api.get<OrdersResponse>('cinema/orders', config?.config);

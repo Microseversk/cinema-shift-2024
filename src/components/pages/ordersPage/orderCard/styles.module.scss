@@ -1,0 +1,62 @@
+@import '@styles/variables';
+
+.card {
+  border-radius: 16px;
+  border: 1px solid $border-extra-light;
+  padding: 16px;
+  width: 328px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chips_green {
+  color: $indicator-positive;
+  background-color: #ecf9f2;
+}
+
+.chips_red {
+  color: $indicator-error;
+  background-color: #f9ecec;
+}
+
+.button {
+  border-color: $border-light;
+}
+
+.deleting_modal {
+  width: 100%;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.return_btn {
+  border-color: $border-light;
+}

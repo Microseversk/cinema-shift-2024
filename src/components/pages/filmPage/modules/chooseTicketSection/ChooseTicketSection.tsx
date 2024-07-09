@@ -1,5 +1,5 @@
 import { Schedule } from '@src/@types/api';
-import { ArrowSmallLeftIcon, Button, CardForm, Tabs, Typography } from '@src/shared';
+import { Button, Tabs, Typography } from '@src/shared';
 import { Modal } from '@src/shared/modal/Modal';
 import { HALLS_MAP } from '@src/utils/constants/hallsMap';
 import { MONTH_MAP } from '@src/utils/constants/monthMap';
@@ -7,14 +7,14 @@ import { FilmShowPlaces, FilmShowTimes } from '..';
 import { BuyTicketsForm } from './buyTicketsForm/BuyTicketsForm';
 import { useChooseTicketSection } from './useChooseTicketSection';
 
-import { Back } from '@src/shared/Back/Back';
 import styles from './styles.module.scss';
 
 interface ChooseTicketSectionProps {
   schedules: Schedule[];
+  filmId: string;
 }
 
-export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => {
+export const ChooseTicketSection = ({ schedules, filmId }: ChooseTicketSectionProps) => {
   const { actions, state } = useChooseTicketSection(schedules);
 
   return (
@@ -83,23 +83,12 @@ export const ChooseTicketSection = ({ schedules }: ChooseTicketSectionProps) => 
             state.setModalIsOpen(false);
           }}
         >
-          {state.isPaying ? (
-            <>
-              <Back icon={<ArrowSmallLeftIcon />} onClick={() => state.setIsPaying(false)}>
-                <Typography variant="p_16_regular" color="tertiary">
-                  Назад
-                </Typography>
-              </Back>
-              <CardForm />
-            </>
-          ) : (
-            <BuyTicketsForm
-              onSubmit={(e) => {
-                e.preventDefault();
-                state.setIsPaying(true);
-              }}
-            />
-          )}
+          <BuyTicketsForm
+            filmId={filmId}
+            seance={{ date: state.choosedDay.date, time: state.choosedTime.time }}
+            tickets={state.choosedPlaces.map(({ row, column }) => ({ row, column }))}
+            onBuyTickets={() => state.setModalIsOpen(false)}
+          />
         </Modal>
       </div>
     </div>

@@ -3,6 +3,6 @@ export const NAVIGATE_ROUTES = {
   FILM_PAGE_ID: (id: string) => `/film/${id}`,
   ROOT_PAGE: '/',
   PROFILE_PAGE: '/profile',
-  TICKETS_PAGE: '/tickets',
+  ORDERS_PAGE: '/orders',
   LOGIN_PAGE: '/login',
 };
