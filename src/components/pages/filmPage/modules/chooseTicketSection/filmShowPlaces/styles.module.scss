@@ -1,5 +1,42 @@
 @import '@styles/variables';
 
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: -200%;
+  left: 50%;
+  width: max-content;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background-color: #fff;
+  z-index: 20;
+  box-shadow: 0 2px 6px rgba($color: #000, $alpha: 28%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #fff transparent transparent;
+  }
+}
+
+.col {
+  position: absolute;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.price {
+  font-weight: $weight-semibold;
+}
+
 .places_wrapper {
   width: fit-content;
   display: flex;
@@ -49,6 +86,10 @@
     visibility: hidden;
   }
 
+  &:hover:not(:disabled) .tooltip {
+    visibility: visible;
+  }
+
   &:disabled {
     background-color: $indicator-light;
     border: none;
@@ -59,8 +100,12 @@
     height: 36px;
     border-radius: 12px;
 
-    & > span {
+    & .col {
       visibility: visible;
+    }
+
+    &:hover .tooltip {
+      top: -100%;
     }
   }
 }

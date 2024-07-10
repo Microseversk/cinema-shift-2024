@@ -1,7 +1,7 @@
 import { Place } from '@src/@types/api';
 import { Button, Typography } from '@src/shared';
 import classNames from 'classnames';
-import { ChoosedPlace } from '../ChooseTicketSection';
+import { ChoosedPlace } from '../useChooseTicketSection';
 import styles from './styles.module.scss';
 
 interface FilmShowPlacesProps {
@@ -37,7 +37,15 @@ export const FilmShowPlaces = ({ places: placeRows, choosedPlaces, onPlaceClick 
                   })
                 }
               >
-                {columnIndex + 1}
+                <div className={styles.tooltip}>
+                  <Typography variant="p_12_regular" className={styles.price}>
+                    {place.price + ' ₽'}
+                  </Typography>
+                  <Typography variant="p_12_regular">
+                    {`${rowIndex + 1}` + ' ряд, ' + `${columnIndex + 1}` + ' место'}
+                  </Typography>
+                </div>
+                <span className={styles.col}>{columnIndex + 1}</span>
               </Button>
             </div>
           ))}
