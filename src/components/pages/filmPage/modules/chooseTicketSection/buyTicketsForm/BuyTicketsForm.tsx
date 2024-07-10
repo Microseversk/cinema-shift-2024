@@ -13,6 +13,7 @@ import {
 } from '@src/utils';
 import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { groupTicketsPlaces } from '@src/utils/helpers/groupTicketsPlaces';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -139,7 +140,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
       </>
     );
   }
-  if (form === 'success') {
+  if (form === 'success' && data) {
     return (
       <div className={styles.success_form}>
         <div className={styles.text_center}>
@@ -170,19 +171,14 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
         </div>
         <div>
           <Typography variant="p_12_regular" color="tertiary">
-            Ряд
-          </Typography>
-          <Typography variant="p_16_regular">
-            {data?.data.order.tickets.map((ticket) => ticket.row).join(', ')}
-          </Typography>
-        </div>
-        <div>
-          <Typography variant="p_12_regular" color="tertiary">
             Места
           </Typography>
-          <Typography variant="p_16_regular">
-            {data?.data.order.tickets.map((ticket) => ticket.column).join(', ')}
-          </Typography>
+          {data?.data?.order?.tickets &&
+            groupTicketsPlaces(data?.data?.order?.tickets).map(([row, columns], index) => (
+              <Typography variant="p_14_regular" key={index}>
+                {row} ряд - {columns.sort((a, b) => a - b).join(', ')} {columns.length > 1 ? 'места' : 'место'}
+              </Typography>
+            ))}
         </div>
         <Typography variant="p_14_regular" color="tertiary">
           Вся информация была продублирована в SMS

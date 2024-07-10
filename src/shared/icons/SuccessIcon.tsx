@@ -18,8 +18,8 @@ export const SuccessIcon = ({ ...props }: React.ComponentProps<'svg'>) => {
           y2="12.041"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7DBA6E" />
-          <stop offset="0.9531" stop-color="#C6E99A" />
+          <stop stopColor="#7DBA6E" />
+          <stop offset="0.9531" stopColor="#C6E99A" />
         </linearGradient>
       </defs>
     </svg>

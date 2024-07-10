@@ -10,8 +10,8 @@ export const QuestionIcon = ({ ...props }: React.ComponentProps<'svg'>) => (
     />
     <defs>
       <linearGradient id="paint0_linear_5334_8800" x1="40.5" y1="12" x2="40.5" y2="68" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#B3ADFA" />
-        <stop offset="1" stop-color="#8548E8" />
+        <stop stopColor="#B3ADFA" />
+        <stop offset="1" stopColor="#8548E8" />
       </linearGradient>
     </defs>
   </svg>
