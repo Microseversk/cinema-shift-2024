@@ -1,12 +1,5 @@
 export const QuestionIcon = ({ ...props }: React.ComponentProps<'svg'>) => (
-  <svg
-    width="81"
-    height="80"
-    viewBox="0 0 81 80"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="81" height="80" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       d="M68.5 40C68.5 55.464 55.964 68 40.5 68C25.036 68 12.5 55.464 12.5 40C12.5 24.536 25.036 12 40.5 12C55.964 12 68.5 24.536 68.5 40Z"
       fill="url(#paint0_linear_5334_8800)"
@@ -16,14 +9,7 @@ export const QuestionIcon = ({ ...props }: React.ComponentProps<'svg'>) => (
       fill="white"
     />
     <defs>
-      <linearGradient
-        id="paint0_linear_5334_8800"
-        x1="40.5"
-        y1="12"
-        x2="40.5"
-        y2="68"
-        gradientUnits="userSpaceOnUse"
-      >
+      <linearGradient id="paint0_linear_5334_8800" x1="40.5" y1="12" x2="40.5" y2="68" gradientUnits="userSpaceOnUse">
         <stop stop-color="#B3ADFA" />
         <stop offset="1" stop-color="#8548E8" />
       </linearGradient>

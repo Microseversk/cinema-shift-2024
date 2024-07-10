@@ -1,10 +1,5 @@
 import { ROUTES } from '@src/utils';
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { Layout } from '../layout/Layout';
 import { FilmPage, LoginPage, OrdersPage, ProfilePage, RootPage } from '../pages';
 import { PrivateRoute } from './PrivateRoute';

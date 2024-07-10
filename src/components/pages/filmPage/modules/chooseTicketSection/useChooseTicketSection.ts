@@ -45,9 +45,7 @@ export const useChooseTicketSection = (schedules: Schedule[]) => {
 
   const onPlaceClick = (place: ChoosedPlace) => {
     if (choosedPlaces.some((p) => p.row === place.row && p.column === place.column)) {
-      setChoosedPlaces(
-        choosedPlaces.filter((p) => !(p.column === place.column && p.row === place.row)),
-      );
+      setChoosedPlaces(choosedPlaces.filter((p) => !(p.column === place.column && p.row === place.row)));
     } else {
       setChoosedPlaces([...choosedPlaces, place]);
     }

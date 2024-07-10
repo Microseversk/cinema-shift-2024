@@ -48,17 +48,15 @@ export const ChooseTicketSection = ({ schedules, filmId }: ChooseTicketSectionPr
               <Typography variant="p_12_regular" color="tertiary">
                 Зал
               </Typography>
-              <Typography variant="p_16_regular">
-                {HALLS_MAP[state.choosedTime.hall.name]}
-              </Typography>
+              <Typography variant="p_16_regular">{HALLS_MAP[state.choosedTime.hall.name]}</Typography>
             </div>
             <div>
               <Typography variant="p_12_regular" color="tertiary">
                 Дата и время
               </Typography>
               <Typography variant="p_16_regular">
-                {state.choosedDay.date.split('.')[0]}{' '}
-                {MONTH_MAP[state.choosedDay.date.split('.')[1]]} {state.choosedTime.time}
+                {state.choosedDay.date.split('.')[0]} {MONTH_MAP[state.choosedDay.date.split('.')[1]]}{' '}
+                {state.choosedTime.time}
               </Typography>
             </div>
             <div>

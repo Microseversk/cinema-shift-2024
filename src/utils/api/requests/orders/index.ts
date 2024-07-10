@@ -6,5 +6,4 @@ export * from './cancel';
 
 type getOrdersConfig = RequestConfig;
 
-export const getOrders = (config?: getOrdersConfig) =>
-  api.get<OrdersResponse>('cinema/orders', config?.config);
+export const getOrders = (config?: getOrdersConfig) => api.get<OrdersResponse>('cinema/orders', config?.config);

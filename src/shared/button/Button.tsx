@@ -8,13 +8,7 @@ interface ButtonProps extends React.ComponentProps<'button'> {
   fullWidth?: boolean;
 }
 
-export const Button = ({
-  variant = 'contained',
-  loading,
-  fullWidth,
-  className,
-  ...props
-}: ButtonProps) => {
+export const Button = ({ variant = 'contained', loading, fullWidth, className, ...props }: ButtonProps) => {
   const classes = classNames(
     styles.button,
     styles[variant],
@@ -26,12 +20,7 @@ export const Button = ({
   );
 
   return (
-    <button
-      disabled={props.disabled || loading}
-      className={classes}
-      type={props.type || 'button'}
-      {...props}
-    >
+    <button disabled={props.disabled || loading} className={classes} type={props.type || 'button'} {...props}>
       <span>{props.children}</span>
       {loading && <span />}
     </button>

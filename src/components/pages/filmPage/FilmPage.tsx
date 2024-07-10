@@ -12,9 +12,7 @@ import styles from './styles.module.scss';
 export const FilmPage = () => {
   const { id } = useParams();
   const { data: film, isLoading: isFilmLoading } = useGetFilmByIdQuery(id ? id : '');
-  const { data: schedules, isLoading: isScheduleLoading } = useGetFilmScheduleByIdQuery(
-    id ? id : '',
-  );
+  const { data: schedules, isLoading: isScheduleLoading } = useGetFilmScheduleByIdQuery(id ? id : '');
 
   if (isFilmLoading || isScheduleLoading) {
     return <FilmPageSkeleton />;

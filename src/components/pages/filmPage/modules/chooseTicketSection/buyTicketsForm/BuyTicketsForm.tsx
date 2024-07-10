@@ -4,6 +4,7 @@ import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src
 import { usePostPaymentQuery } from '@src/hooks/usePostPaymentQuery';
 import { Back } from '@src/shared/Back/Back';
 import { authContext } from '@src/store/authContext/authContext';
+import { firstNameIsValid, lastNameIsValid, middleNameIsValid, phoneIsValid } from '@src/utils';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
@@ -20,7 +21,11 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
   const [form, setForm] = useState<'person' | 'card'>('person');
   const { user } = useContext(authContext);
 
-  const { register, handleSubmit } = useForm<PostPaymentBody>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PostPaymentBody>({
     defaultValues: {
       person: user ? { ...user } : {},
       filmId: filmId,
@@ -48,10 +53,30 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
         <Typography tag="h2" variant="h2">
           Введите ваши данные
         </Typography>
-        <Input label="Имя*" {...register('person.firstname')} />
-        <Input label="Фамилия*" {...register('person.lastname')} />
-        <Input label="Отчество" {...register('person.middlename')} />
-        <Input label="Телефон*" {...register('person.phone')} />
+        <Input
+          isError={!!errors.person?.firstname}
+          message={errors.person?.firstname?.message}
+          label="Имя*"
+          {...register('person.firstname', { validate: firstNameIsValid })}
+        />
+        <Input
+          isError={!!errors.person?.lastname}
+          message={errors.person?.lastname?.message}
+          label="Фамилия*"
+          {...register('person.lastname', { validate: lastNameIsValid })}
+        />
+        <Input
+          isError={!!errors.person?.middlename}
+          message={errors.person?.middlename?.message}
+          label="Отчество"
+          {...register('person.middlename', { validate: middleNameIsValid })}
+        />
+        <Input
+          isError={!!errors.person?.phone}
+          message={errors.person?.phone?.message}
+          label="Телефон*"
+          {...register('person.phone', { validate: phoneIsValid })}
+        />
         <Button type="button" fullWidth onClick={() => setForm('card')}>
           Продолжить
         </Button>

@@ -10,11 +10,7 @@ interface FilmShowPlacesProps {
   onPlaceClick: (place: ChoosedPlace) => void;
 }
 
-export const FilmShowPlaces = ({
-  places: placeRows,
-  choosedPlaces,
-  onPlaceClick,
-}: FilmShowPlacesProps) => (
+export const FilmShowPlaces = ({ places: placeRows, choosedPlaces, onPlaceClick }: FilmShowPlacesProps) => (
   <div className={styles.places_wrapper}>
     <Typography variant="p_12_regular" color="secondary">
       Экран
@@ -30,9 +26,7 @@ export const FilmShowPlaces = ({
             <div className={styles.btn_place_wrapper} key={columnIndex}>
               <Button
                 className={classNames(styles.btn_place, {
-                  [styles.choosed]: choosedPlaces?.some(
-                    (p) => p.row === rowIndex + 1 && p.column === columnIndex + 1,
-                  ),
+                  [styles.choosed]: choosedPlaces?.some((p) => p.row === rowIndex + 1 && p.column === columnIndex + 1),
                 })}
                 disabled={place.type === 'BLOCKED'}
                 onClick={() =>

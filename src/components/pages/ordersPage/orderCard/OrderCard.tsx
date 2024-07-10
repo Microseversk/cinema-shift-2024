@@ -90,8 +90,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
           </Typography>
           {places.map(([row, columns], index) => (
             <Typography variant="p_14_regular" key={index}>
-              {row} ряд - {columns.sort((a, b) => a - b).join(', ')}{' '}
-              {columns.length > 1 ? 'места' : 'место'}
+              {row} ряд - {columns.sort((a, b) => a - b).join(', ')} {columns.length > 1 ? 'места' : 'место'}
             </Typography>
           ))}
         </div>
@@ -103,12 +102,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
             Код билета {order.orderNumber}
           </Typography>
         </div>
-        <Button
-          variant="outlined"
-          fullWidth
-          className={styles.button}
-          onClick={() => setIsDeleting(true)}
-        >
+        <Button variant="outlined" fullWidth className={styles.button} onClick={() => setIsDeleting(true)}>
           Вернуть билет
         </Button>
       </div>
