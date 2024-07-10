@@ -3,7 +3,15 @@ import { ArrowSmallLeftIcon, Button, Input, Typography } from '@src/shared';
 import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src/@types/api';
 import { Back } from '@src/shared/Back/Back';
 import { authContext } from '@src/store/authContext/authContext';
-import { firstNameIsValid, lastNameIsValid, middleNameIsValid, phoneIsValid } from '@src/utils';
+import {
+  cardCVVIsValid,
+  cardDateIsValid,
+  cardNumberIsValid,
+  firstNameIsValid,
+  lastNameIsValid,
+  middleNameIsValid,
+  phoneIsValid,
+} from '@src/utils';
 import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -96,16 +104,34 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
           </Typography>
           <form className={styles.card_form} id="card_form" onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.card_number}>
-              <Input placeholder="0000 0000" label="Номер*" {...register('debitCard.pan')} />
+              <Input
+                isError={!!errors.debitCard?.pan}
+                message={errors.debitCard?.pan?.message}
+                placeholder="0000 0000"
+                label="Номер*"
+                {...register('debitCard.pan', { validate: cardNumberIsValid })}
+              />
             </div>
             <div className={styles.card_date}>
-              <Input placeholder="00/00" label="Срок*" {...register('debitCard.expireDate')} />
+              <Input
+                isError={!!errors.debitCard?.expireDate}
+                message={errors.debitCard?.expireDate?.message}
+                placeholder="0000"
+                label="Срок*"
+                {...register('debitCard.expireDate', { validate: cardDateIsValid })}
+              />
             </div>
             <div className={styles.card_cvv}>
-              <Input placeholder="0000" label="CVV*" {...register('debitCard.cvv')} />
+              <Input
+                isError={!!errors.debitCard?.cvv}
+                message={errors.debitCard?.cvv?.message}
+                placeholder="0000"
+                label="CVV*"
+                {...register('debitCard.cvv', { validate: cardCVVIsValid })}
+              />
             </div>
           </form>
-          <Button type="submit" form="card_form" fullWidth loading={isPending} disabled={isPending}>
+          <Button type="submit" form="card_form" fullWidth loading={isPending}>
             Оплатить
           </Button>
         </div>

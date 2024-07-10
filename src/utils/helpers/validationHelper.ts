@@ -130,13 +130,25 @@ export const cardNumberIsValid: ValidateFn<string> = (cardNumber: string) => {
   return true;
 };
 
+export const cardDateIsValid: ValidateFn<string> = (cardDate: string) => {
+  if (!cardDate) {
+    return 'Поле является обязательным';
+  }
+
+  if (cardDate.length !== 4) {
+    return 'Дата должен содержать 4 цифры';
+  }
+
+  return true;
+};
+
 export const cardCVVIsValid: ValidateFn<string> = (cvv: string) => {
   if (!cvv) {
     return 'Поле является обязательным';
   }
 
-  if (cvv.length !== 4) {
-    return 'Код должен содержать 4 цифр';
+  if (cvv.length !== 3) {
+    return 'Код должен содержать 3 цифры';
   }
 
   return true;
