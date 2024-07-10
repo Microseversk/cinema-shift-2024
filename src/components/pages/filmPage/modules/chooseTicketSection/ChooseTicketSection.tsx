@@ -2,11 +2,13 @@ import { Schedule } from '@src/@types/api';
 import { Button, Tabs, Typography } from '@src/shared';
 import { Modal } from '@src/shared/modal/Modal';
 import { HALLS_MAP } from '@src/utils/constants/hallsMap';
-import { MONTH_MAP } from '@src/utils/constants/monthMap';
+import { MONTH_MAP, MONTH_MAP_SHORT } from '@src/utils/constants/monthMap';
 import { FilmShowPlaces, FilmShowTimes } from '..';
 import { BuyTicketsForm } from './buyTicketsForm/BuyTicketsForm';
 import { useChooseTicketSection } from './useChooseTicketSection';
 
+import { WEEK_MAP } from '@src/utils/constants/weekMap';
+import { formatDate } from '@src/utils/helpers/formatDate';
 import styles from './styles.module.scss';
 
 interface ChooseTicketSectionProps {
@@ -20,7 +22,13 @@ export const ChooseTicketSection = ({ schedules, filmId }: ChooseTicketSectionPr
   return (
     <div className={styles.choose_ticket_section_wrapper}>
       <Tabs
-        tabs={schedules.map((schedule) => schedule.date)}
+        tabs={schedules.map((schedule, index) => {
+          const date = formatDate(schedule.date);
+          return {
+            key: schedule.date,
+            value: `${WEEK_MAP[index]},${date.day} ${MONTH_MAP_SHORT[date.month]}`,
+          };
+        })}
         activeTab={state.choosedDay.date}
         onTabClick={actions.onDateClick}
         className={styles.date}

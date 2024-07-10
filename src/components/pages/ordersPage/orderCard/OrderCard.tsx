@@ -4,6 +4,7 @@ import { QuestionIcon } from '@src/shared/icons/QuestionIcon';
 import { Modal } from '@src/shared/modal/Modal';
 import { useGetFilmByIdQuery } from '@src/utils/api/hooks/useGetFilmByIdQuery';
 import { usePutOrderCancelQuery } from '@src/utils/api/hooks/usePutOrderCancelQuery';
+import { groupTicketsPlaces } from '@src/utils/helpers/groupTicketsPlaces';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 
@@ -16,19 +17,6 @@ export const OrderCard = ({ order }: OrderCardProps) => {
   const { data } = useGetFilmByIdQuery(order.tickets[0].filmId || '');
   const [isDeleting, setIsDeleting] = useState(false);
   const { mutate, isPending } = usePutOrderCancelQuery();
-
-  const places = Object.entries(
-    order.tickets
-      .slice()
-      .sort((a, b) => a.row - b.row)
-      .reduce((acc: { [key: number]: number[] }, item) => {
-        if (!acc[item.row]) {
-          acc[item.row] = [];
-        }
-        acc[item.row].push(item.column);
-        return acc;
-      }, []),
-  );
 
   if (order.status === 'CANCELED') {
     return (
@@ -88,7 +76,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
           <Typography tag="h3" variant="h3">
             {data?.name}
           </Typography>
-          {places.map(([row, columns], index) => (
+          {groupTicketsPlaces(order.tickets).map(([row, columns], index) => (
             <Typography variant="p_14_regular" key={index}>
               {row} ряд - {columns.sort((a, b) => a - b).join(', ')} {columns.length > 1 ? 'места' : 'место'}
             </Typography>

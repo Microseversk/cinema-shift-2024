@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 interface TabsProps {
-  tabs: string[];
+  tabs: { key: string; value: string }[];
   activeTab: string;
   onTabClick?: (tab: string) => void;
   className?: string;
@@ -19,11 +19,11 @@ export const Tabs = ({ activeTab, tabs, className, onTabClick }: TabsProps) => {
       {tabs.map((tab) => (
         <Typography
           variant="p_14_regular"
-          key={tab}
-          className={classNames(styles.tab, { [styles.tab_active]: tab === activeTab })}
-          onClick={() => onTabChange(tab)}
+          key={tab.key}
+          className={classNames(styles.tab, { [styles.tab_active]: tab.key === activeTab })}
+          onClick={() => onTabChange(tab.key)}
         >
-          {tab}
+          {tab.value}
         </Typography>
       ))}
     </div>

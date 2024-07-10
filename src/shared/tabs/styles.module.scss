@@ -2,15 +2,20 @@
 
 .tabs_container {
   display: flex;
+  width: max-content;
+  max-width: 100%;
   justify-content: space-between;
   align-items: center;
   border-radius: $tabs-border-radius;
   background-color: $bg-secondary;
   overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .tab {
-  width: 100%;
   text-align: center;
   cursor: pointer;
   border-radius: $tab-border-radius;
