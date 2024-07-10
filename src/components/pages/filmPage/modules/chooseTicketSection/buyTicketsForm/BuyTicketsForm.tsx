@@ -110,6 +110,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
                 isError={!!errors.debitCard?.pan}
                 message={errors.debitCard?.pan?.message}
                 placeholder="0000 0000"
+                maxLength={8}
                 label="Номер*"
                 {...register('debitCard.pan', { validate: cardNumberIsValid })}
               />
@@ -119,6 +120,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
                 isError={!!errors.debitCard?.expireDate}
                 message={errors.debitCard?.expireDate?.message}
                 placeholder="0000"
+                maxLength={4}
                 label="Срок*"
                 {...register('debitCard.expireDate', { validate: cardDateIsValid })}
               />
@@ -128,6 +130,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
                 isError={!!errors.debitCard?.cvv}
                 message={errors.debitCard?.cvv?.message}
                 placeholder="0000"
+                maxLength={3}
                 label="CVV*"
                 {...register('debitCard.cvv', { validate: cardCVVIsValid })}
               />
