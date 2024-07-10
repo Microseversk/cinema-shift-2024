@@ -1,18 +1,11 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { UpdateProfileDto } from '@src/@types/api';
 import { Button, Input, Typography } from '@src/shared';
 import { authContext } from '@src/store/authContext/authContext';
+import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-
-import {
-  cityIsValid,
-  emailIsValid,
-  firstNameIsValid,
-  lastNameIsValid,
-  middleNameIsValid,
-  phoneIsValid,
-} from '@src/utils';
-import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
+import { profileFormScheme } from './constants/profileFormScheme';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
@@ -29,6 +22,7 @@ export const ProfilePage = () => {
       phone: user?.phone,
     },
     reValidateMode: 'onChange',
+    resolver: yupResolver(profileFormScheme),
   });
 
   const onSubmit: SubmitHandler<UpdateProfileDto> = (data) => {
@@ -45,38 +39,38 @@ export const ProfilePage = () => {
           isError={!!errors.profile?.lastname}
           message={errors?.profile?.lastname?.message}
           label="Фамилия"
-          {...register('profile.lastname', { validate: lastNameIsValid })}
+          {...register('profile.lastname')}
         />
         <Input
           isError={!!errors.profile?.firstname}
           message={errors.profile?.firstname?.message}
           label="Имя"
-          {...register('profile.firstname', { validate: firstNameIsValid })}
+          {...register('profile.firstname')}
         />
         <Input
           isError={!!errors.profile?.middlename}
           message={errors.profile?.middlename?.message}
           label="Отчество"
-          {...register('profile.middlename', { validate: middleNameIsValid })}
+          {...register('profile.middlename')}
         />
         <Input
           isError={!!errors.phone}
           message={errors.phone?.message}
           label="Номер телефона"
           disabled
-          {...register('phone', { validate: phoneIsValid })}
+          {...register('phone')}
         />
         <Input
           isError={!!errors.profile?.email}
           message={errors.profile?.email?.message}
           label="Email"
-          {...register('profile.email', { validate: emailIsValid })}
+          {...register('profile.email')}
         />
         <Input
           isError={!!errors.profile?.city}
           message={errors.profile?.city?.message}
           label="Город"
-          {...register('profile.city', { validate: cityIsValid })}
+          {...register('profile.city')}
         />
         <Button loading={isPending} type="submit" disabled={!dirtyFields.profile}>
           Обновить данные

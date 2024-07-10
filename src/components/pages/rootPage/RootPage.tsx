@@ -15,7 +15,7 @@ export const RootPage = () => {
       <div className={styles.cards_wrapper}>
         {isLoading ? (
           <>
-            {[...Array(6)].map((_, index) => (
+            {[...Array(3)].map((_, index) => (
               <FilmCardSkeleton key={index} />
             ))}
           </>

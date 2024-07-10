@@ -112,10 +112,10 @@ export interface PostPaymentBody {
 export interface User {
   phone: string;
   firstname: string;
-  middlename: string;
+  middlename?: string;
   lastname: string;
   email: string;
-  city: string;
+  city?: string;
 }
 
 export interface GetUserSessionResponse extends ResponseBase {
