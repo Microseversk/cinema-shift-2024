@@ -124,7 +124,7 @@ export interface GetUserSessionResponse extends ResponseBase {
 
 export interface SignInDto {
   phone: string;
-  code: number;
+  code?: number;
 }
 
 export interface postSignInResponse extends ResponseBase {

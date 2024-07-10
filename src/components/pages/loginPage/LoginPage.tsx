@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './styles.module.scss';
 
 import { SignInDto } from '@src/@types/api';
@@ -6,6 +6,7 @@ import { usePostOtpQuery } from '@src/hooks/usePostOtpQuery';
 import { usePostUserSignInQuery } from '@src/hooks/usePostUserSignInQuery';
 import { Button, Input, Typography } from '@src/shared';
 import { authContext } from '@src/store/authContext/authContext';
+import { otpIsValid, phoneIsValid } from '@src/utils';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -14,38 +15,34 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(authContext);
   const [isWritingOtp, setIsWritingOtp] = useState(false);
-  const { register, handleSubmit, getValues } = useForm<SignInDto>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInDto>({ reValidateMode: 'onChange' });
   const mutateOtp = usePostOtpQuery();
   const mutateLogin = usePostUserSignInQuery();
 
   const onSubmitLogin: SubmitHandler<SignInDto> = (data) => {
-    mutateLogin.mutate(
-      {
-        params: data,
-      },
-      {
-        onSuccess: (data) => {
-          window.localStorage.setItem('token', data.data.token);
-          setUser(data.data.user);
-          navigate(NAVIGATE_ROUTES.ROOT_PAGE);
+    if (!isWritingOtp && !data.code) {
+      mutateOtp.mutate(
+        { params: { phone: data.phone } },
+        {
+          onSuccess: () => setIsWritingOtp(true),
         },
-      },
-    );
-  };
-
-  const onSubmitPhone = (e: FormEvent) => {
-    e.preventDefault();
-
-    mutateOtp.mutate(
-      {
-        params: {
-          phone: getValues('phone'),
+      );
+    } else {
+      mutateLogin.mutate(
+        { params: data },
+        {
+          onSuccess: (data) => {
+            window.localStorage.setItem('token', data.data.token);
+            setUser(data.data.user);
+            navigate(NAVIGATE_ROUTES.ROOT_PAGE);
+          },
         },
-      },
-      {
-        onSuccess: () => setIsWritingOtp(true),
-      },
-    );
+      );
+    }
   };
 
   return (
@@ -60,34 +57,28 @@ export const LoginPage = () => {
       </Typography>
       {!isWritingOtp ? (
         <>
-          <form id="phone_form" className={styles.form}>
+          <form id="phone_form" className={styles.form} onSubmit={handleSubmit(onSubmitLogin)}>
             <Input
+              isError={!!errors.phone}
+              message={errors.phone?.message}
               placeholder="Телефон"
-              {...register('phone', {
-                required: true,
-              })}
+              {...register('phone', { validate: phoneIsValid })}
             />
           </form>
-          <Button
-            form="phone_form"
-            type="submit"
-            loading={mutateOtp.isPending}
-            onClick={onSubmitPhone}
-          >
+          <Button form="phone_form" type="submit" loading={mutateOtp.isPending}>
             Продолжить
           </Button>
         </>
       ) : (
         <>
           <form id="login_form" className={styles.form} onSubmit={handleSubmit(onSubmitLogin)}>
+            <Input disabled placeholder="Телефон" {...register('phone')} />
             <Input
-              disabled
-              placeholder="Телефон"
-              {...register('phone', {
-                required: true,
-              })}
+              isError={!!errors.code}
+              message={errors.code?.message}
+              placeholder="Проверочный код"
+              {...register('code', { validate: (v) => otpIsValid(v!) })}
             />
-            <Input placeholder="Проверочный код" {...register('code', { required: true })} />
           </form>
           <Button form="login_form" type="submit" loading={mutateLogin.isPending}>
             Войти
