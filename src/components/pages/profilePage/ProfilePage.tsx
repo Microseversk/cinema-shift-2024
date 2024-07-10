@@ -1,11 +1,10 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { UpdateProfileDto } from '@src/@types/api';
 import { Button, Input, Typography } from '@src/shared';
 import { authContext } from '@src/store/authContext/authContext';
+import { emailIsValid, firstNameIsValid, lastNameIsValid, phoneIsValid } from '@src/utils';
 import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { profileFormScheme } from './constants/profileFormScheme';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
@@ -22,7 +21,6 @@ export const ProfilePage = () => {
       phone: user?.phone,
     },
     reValidateMode: 'onChange',
-    resolver: yupResolver(profileFormScheme),
   });
 
   const onSubmit: SubmitHandler<UpdateProfileDto> = (data) => {
@@ -39,32 +37,32 @@ export const ProfilePage = () => {
           isError={!!errors.profile?.lastname}
           message={errors?.profile?.lastname?.message}
           label="Фамилия"
-          {...register('profile.lastname')}
+          {...register('profile.lastname', { validate: lastNameIsValid })}
         />
         <Input
           isError={!!errors.profile?.firstname}
           message={errors.profile?.firstname?.message}
           label="Имя"
-          {...register('profile.firstname')}
+          {...register('profile.firstname', { validate: firstNameIsValid })}
         />
         <Input
           isError={!!errors.profile?.middlename}
           message={errors.profile?.middlename?.message}
           label="Отчество"
-          {...register('profile.middlename')}
+          {...register('profile.middlename', { maxLength: 60 })}
         />
         <Input
           isError={!!errors.phone}
           message={errors.phone?.message}
           label="Номер телефона"
           disabled
-          {...register('phone')}
+          {...register('phone', { validate: phoneIsValid })}
         />
         <Input
           isError={!!errors.profile?.email}
           message={errors.profile?.email?.message}
           label="Email"
-          {...register('profile.email')}
+          {...register('profile.email', { validate: emailIsValid })}
         />
         <Input
           isError={!!errors.profile?.city}
