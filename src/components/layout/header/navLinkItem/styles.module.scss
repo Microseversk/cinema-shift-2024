@@ -1,4 +1,16 @@
+@import '@styles/variables';
+
 .link {
   display: flex;
   gap: 16px;
+}
+
+.active {
+  & svg > path {
+    fill: $text-brand;
+  }
+
+  & > p {
+    color: $text-brand;
+  }
 }

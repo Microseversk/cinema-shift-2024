@@ -3,6 +3,7 @@ import { Cinema, Exit, Ticket, Typography, User } from '@src/shared';
 import { authContext } from '@src/store/authContext/authContext';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { NavLinkItem } from './navLinkItem/NavLinkItem';
 import styles from './styles.module.scss';
 
@@ -10,6 +11,7 @@ interface HeaderProps extends React.ComponentPropsWithoutRef<'header'> {}
 
 export const Header = ({ ...props }: HeaderProps) => {
   const { user, setUser } = useContext(authContext);
+  const { pathname } = useLocation();
 
   const handleLogout = () => {
     setUser(undefined);
@@ -27,7 +29,7 @@ export const Header = ({ ...props }: HeaderProps) => {
         {user?.phone && (
           <>
             <li>
-              <NavLinkItem to={NAVIGATE_ROUTES.PROFILE_PAGE}>
+              <NavLinkItem to={NAVIGATE_ROUTES.PROFILE_PAGE} active={pathname === NAVIGATE_ROUTES.PROFILE_PAGE}>
                 <User />
                 <Typography variant="p_16_medium" color="secondary">
                   Профиль
@@ -35,7 +37,7 @@ export const Header = ({ ...props }: HeaderProps) => {
               </NavLinkItem>
             </li>
             <li>
-              <NavLinkItem to={NAVIGATE_ROUTES.ORDERS_PAGE}>
+              <NavLinkItem to={NAVIGATE_ROUTES.ORDERS_PAGE} active={pathname === NAVIGATE_ROUTES.ORDERS_PAGE}>
                 <Ticket />
                 <Typography variant="p_16_medium" color="secondary">
                   Билеты
