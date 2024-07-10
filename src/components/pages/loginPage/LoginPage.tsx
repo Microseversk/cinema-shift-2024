@@ -8,12 +8,17 @@ import { otpIsValid, phoneIsValid } from '@src/utils';
 import { usePostOtpQuery } from '@src/utils/api/hooks/usePostOtpQuery';
 import { usePostUserSignInQuery } from '@src/utils/api/hooks/usePostUserSignInQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { useCountdown } from '@src/utils/hooks/useCountdown';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(authContext);
+  const [count, { startCountdown }] = useCountdown({
+    interval: 1000,
+    start: 60,
+  });
   const [isWritingOtp, setIsWritingOtp] = useState(false);
   const {
     register,
@@ -28,7 +33,10 @@ export const LoginPage = () => {
       mutateOtp.mutate(
         { params: { phone: data.phone } },
         {
-          onSuccess: () => setIsWritingOtp(true),
+          onSuccess: () => {
+            setIsWritingOtp(true);
+            startCountdown();
+          },
         },
       );
     } else {
@@ -83,6 +91,15 @@ export const LoginPage = () => {
           <Button form="login_form" type="submit" loading={mutateLogin.isPending}>
             Войти
           </Button>
+          {count > 0 ? (
+            <Typography variant="p_14_regular" color="tertiary">
+              Отправить повторно через {count} сек
+            </Typography>
+          ) : (
+            <Button variant="link" onClick={() => setIsWritingOtp(false)}>
+              Отправить ещё раз
+            </Button>
+          )}
         </>
       )}
     </div>
