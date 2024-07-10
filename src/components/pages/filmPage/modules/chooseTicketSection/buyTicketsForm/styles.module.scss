@@ -34,3 +34,13 @@
 .card_cvv {
   grid-area: cvv;
 }
+
+.success_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.text_center {
+  text-align: center;
+}

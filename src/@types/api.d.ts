@@ -168,3 +168,13 @@ export interface CinemaOrder {
 export interface OrdersResponse extends ResponseBase {
   orders: CinemaOrder[];
 }
+
+export interface PaymentResponse extends ResponseBase {
+  order: {
+    filmName: string;
+    orderNumber: number;
+    tickets: Ticket[];
+    phone: string;
+    status: 'PAYED' | 'CANCELED';
+  };
+}

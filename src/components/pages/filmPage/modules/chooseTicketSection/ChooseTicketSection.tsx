@@ -85,7 +85,6 @@ export const ChooseTicketSection = ({ schedules, filmId }: ChooseTicketSectionPr
             filmId={filmId}
             seance={{ date: state.choosedDay.date, time: state.choosedTime.time }}
             tickets={state.choosedPlaces.map(({ row, column }) => ({ row, column }))}
-            onBuyTickets={() => state.setModalIsOpen(false)}
           />
         </Modal>
       </div>

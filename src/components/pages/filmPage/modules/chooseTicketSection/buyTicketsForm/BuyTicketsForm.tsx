@@ -1,6 +1,5 @@
-import { ArrowSmallLeftIcon, Button, Input, Typography } from '@src/shared';
-
 import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src/@types/api';
+import { ArrowSmallLeftIcon, Button, Input, SuccessIcon, Typography } from '@src/shared';
 import { Back } from '@src/shared/Back/Back';
 import { authContext } from '@src/store/authContext/authContext';
 import {
@@ -13,20 +12,22 @@ import {
   phoneIsValid,
 } from '@src/utils';
 import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
+import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 interface BuyTicketsFormProps {
   filmId: string;
   seance: FilmTicketSeance;
   tickets: CreatePaymentTicketsDto[];
-  onBuyTickets: () => void;
 }
 
-export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTicketsFormProps) => {
-  const { mutate, isPending } = usePostPaymentQuery();
-  const [form, setForm] = useState<'person' | 'card'>('person');
+export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps) => {
+  const navigate = useNavigate();
+  const { mutate, data, isPending } = usePostPaymentQuery();
+  const [form, setForm] = useState<'person' | 'card' | 'success'>('person');
   const { user } = useContext(authContext);
 
   const {
@@ -49,7 +50,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
       },
       {
         onSuccess: () => {
-          onBuyTickets();
+          setForm('success');
         },
       },
     );
@@ -136,6 +137,65 @@ export const BuyTicketsForm = ({ filmId, seance, tickets, onBuyTickets }: BuyTic
           </Button>
         </div>
       </>
+    );
+  }
+  if (form === 'success') {
+    return (
+      <div className={styles.success_form}>
+        <div className={styles.text_center}>
+          <SuccessIcon />
+        </div>
+        <Typography tag="h2" variant="h2" className={styles.text_center}>
+          Оплата прошла успешно!
+        </Typography>
+        <div>
+          <Typography variant="p_12_regular" color="tertiary">
+            Номер билета
+          </Typography>
+          <Typography variant="p_16_regular">{data?.data.order.orderNumber}</Typography>
+        </div>
+        <div>
+          <Typography variant="p_12_regular" color="tertiary">
+            Фильм
+          </Typography>
+          <Typography variant="p_16_regular">{data?.data.order.filmName}</Typography>
+        </div>
+        <div>
+          <Typography variant="p_12_regular" color="tertiary">
+            Дата и время
+          </Typography>
+          <Typography variant="p_16_regular">
+            {data?.data.order.tickets[0].seance.date} {data?.data.order.tickets[0].seance.time}
+          </Typography>
+        </div>
+        <div>
+          <Typography variant="p_12_regular" color="tertiary">
+            Ряд
+          </Typography>
+          <Typography variant="p_16_regular">
+            {data?.data.order.tickets.map((ticket) => ticket.row).join(', ')}
+          </Typography>
+        </div>
+        <div>
+          <Typography variant="p_12_regular" color="tertiary">
+            Места
+          </Typography>
+          <Typography variant="p_16_regular">
+            {data?.data.order.tickets.map((ticket) => ticket.column).join(', ')}
+          </Typography>
+        </div>
+        <Typography variant="p_14_regular" color="tertiary">
+          Вся информация была продублирована в SMS
+        </Typography>
+        <Button
+          variant="link"
+          onClick={() => navigate(NAVIGATE_ROUTES.ORDERS_PAGE)}
+          fullWidth
+          className={styles.text_center}
+        >
+          Перейти в личный кабинет
+        </Button>
+      </div>
     );
   }
 };

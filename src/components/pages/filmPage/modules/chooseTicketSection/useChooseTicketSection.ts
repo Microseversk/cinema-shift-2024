@@ -21,6 +21,7 @@ export const placesObjectToArray = (places: ChoosedPlace[]) => {
 export const useChooseTicketSection = (schedules: Schedule[]) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isPaying, setIsPaying] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [choosedDay, setChoosedDay] = useState<Schedule>(schedules[0]);
   const [choosedTime, setChoosedTime] = useState<Omit<ScheduleSeance, 'payedTickets'>>({
     hall: choosedDay.seances[0].hall,
@@ -58,6 +59,8 @@ export const useChooseTicketSection = (schedules: Schedule[]) => {
       choosedTime,
       modalIsOpen,
       isPaying,
+      isSuccess,
+      setIsSuccess,
       setChoosedDay,
       setChoosedTime,
       setChoosedPlaces,
