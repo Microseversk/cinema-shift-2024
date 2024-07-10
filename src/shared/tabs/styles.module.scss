@@ -18,6 +18,10 @@
   margin: 2px;
   padding: 10px 16px;
 
+  &:hover {
+    background-color: rgba($color: $bg-primary, $alpha: 40%);
+  }
+
   &.tab_active {
     background-color: $bg-primary;
   }
