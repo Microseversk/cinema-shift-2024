@@ -1,6 +1,6 @@
-import { useGetTodayQuery } from '@src/hooks';
 import { Typography } from '@src/shared';
 
+import { useGetTodayQuery } from '@src/utils/api/hooks/useGetTodayQuery';
 import { FilmCard, FilmCardSkeleton } from './modules';
 import styles from './styles.module.scss';
 

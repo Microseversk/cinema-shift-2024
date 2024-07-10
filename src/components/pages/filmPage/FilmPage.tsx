@@ -1,9 +1,9 @@
-import { useGetFilmByIdQuery, useGetFilmScheduleByIdQuery } from '@src/hooks';
 import { ArrowSmallLeftIcon, Typography } from '@src/shared';
-import { Link, useParams } from 'react-router-dom';
-
 import { Back } from '@src/shared/Back/Back';
+import { useGetFilmByIdQuery } from '@src/utils/api/hooks/useGetFilmByIdQuery';
+import { useGetFilmScheduleByIdQuery } from '@src/utils/api/hooks/useGetFilmScheduleByIdQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { Link, useParams } from 'react-router-dom';
 import { FilmPageSkeleton } from './filmPageSkeleton/FilmPageSkeleton';
 import { FilmInfo } from './modules';
 import { ChooseTicketSection } from './modules/chooseTicketSection/ChooseTicketSection';

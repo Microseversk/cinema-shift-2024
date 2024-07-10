@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import styles from './styles.module.scss';
 
 import { SignInDto } from '@src/@types/api';
-import { usePostOtpQuery } from '@src/hooks/usePostOtpQuery';
-import { usePostUserSignInQuery } from '@src/hooks/usePostUserSignInQuery';
 import { Button, Input, Typography } from '@src/shared';
 import { authContext } from '@src/store/authContext/authContext';
 import { otpIsValid, phoneIsValid } from '@src/utils';
+import { usePostOtpQuery } from '@src/utils/api/hooks/usePostOtpQuery';
+import { usePostUserSignInQuery } from '@src/utils/api/hooks/usePostUserSignInQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';

@@ -4,7 +4,6 @@ import { authContext } from '@src/store/authContext/authContext';
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { usePatchUserProfileQuery } from '@src/hooks/usePatchUserProfileQuery';
 import {
   cityIsValid,
   emailIsValid,
@@ -13,6 +12,7 @@ import {
   middleNameIsValid,
   phoneIsValid,
 } from '@src/utils';
+import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {

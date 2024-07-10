@@ -1,7 +1,6 @@
-import { useGetOrdersQuery } from '@src/hooks/useGetOrdersQuery';
-import { OrderCard } from './orderCard/OrderCard';
-
 import { Typography } from '@src/shared';
+import { useGetOrdersQuery } from '@src/utils/api/hooks/useGetOrdersQuery';
+import { OrderCard } from './orderCard/OrderCard';
 import { OrderCardSkeleton } from './orderCard/OrderCardSkeleton';
 import styles from './styles.module.scss';
 

@@ -1,10 +1,10 @@
 import { ArrowSmallLeftIcon, Button, Input, Typography } from '@src/shared';
 
 import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src/@types/api';
-import { usePostPaymentQuery } from '@src/hooks/usePostPaymentQuery';
 import { Back } from '@src/shared/Back/Back';
 import { authContext } from '@src/store/authContext/authContext';
 import { firstNameIsValid, lastNameIsValid, middleNameIsValid, phoneIsValid } from '@src/utils';
+import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';

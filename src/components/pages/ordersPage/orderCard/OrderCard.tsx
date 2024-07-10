@@ -1,9 +1,9 @@
 import { CinemaOrder } from '@src/@types/api';
-import { useGetFilmByIdQuery } from '@src/hooks';
-import { usePutOrderCancelQuery } from '@src/hooks/usePutOrderCancelQuery';
 import { Button, Chips, Typography } from '@src/shared';
 import { QuestionIcon } from '@src/shared/icons/QuestionIcon';
 import { Modal } from '@src/shared/modal/Modal';
+import { useGetFilmByIdQuery } from '@src/utils/api/hooks/useGetFilmByIdQuery';
+import { usePutOrderCancelQuery } from '@src/utils/api/hooks/usePutOrderCancelQuery';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 

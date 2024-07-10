@@ -1,5 +1,5 @@
 import { User } from '@src/@types/api';
-import { useGetUserSessionQuery } from '@src/hooks/useGetUserSessionQuery';
+import { useGetUserSessionQuery } from '@src/utils/api/hooks/useGetUserSessionQuery';
 import { useEffect, useState } from 'react';
 import { authContext } from './authContext';
 
