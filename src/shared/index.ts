@@ -1,4 +1,6 @@
 export * from './button/Button';
+export * from './cardForm/CardForm';
+export * from './chips/Chips';
 export * from './filmImage/FilmImage';
 export * from './filmRating/FilmRating';
 export * from './icons';

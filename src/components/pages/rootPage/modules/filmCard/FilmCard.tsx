@@ -1,8 +1,9 @@
 import { Film } from '@src/@types/api';
 import { Button, FilmImage, FilmRating, Typography } from '@src/shared';
-import { useNavigate } from 'react-router-dom';
-
 import { API } from '@src/utils/constants/api';
+import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
+import { Link } from 'react-router-dom';
+
 import styles from './styles.module.scss';
 
 interface FilmCardProps {
@@ -10,8 +11,6 @@ interface FilmCardProps {
 }
 
 export const FilmCard = ({ film }: FilmCardProps) => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.card}>
       <FilmImage
@@ -22,22 +21,19 @@ export const FilmCard = ({ film }: FilmCardProps) => {
         releaseDate={film.releaseDate}
       />
       <div>
-        <Typography variant="h3">{film?.name}</Typography>
-        <Typography size="sm" color="tertiary" weight="thin">
+        <Typography tag="h3" variant="h3">
           {film?.name}
         </Typography>
       </div>
       <div>
         <FilmRating rating={Number(film.userRatings.kinopoisk)} />
-        <Typography size="sm" weight="thin" color="tertiary">
+        <Typography variant="p_14_regular" color="tertiary">
           Кинопоиск - {film.userRatings.kinopoisk}
         </Typography>
       </div>
-      <Button onClick={() => navigate(`/film/${film.id}`)}>
-        <Typography weight="semibold" color="invert">
-          Подробнее
-        </Typography>
-      </Button>
+      <Link to={NAVIGATE_ROUTES.FILM_PAGE_ID(film.id)}>
+        <Button fullWidth>Подробнее</Button>
+      </Link>
     </div>
   );
 };

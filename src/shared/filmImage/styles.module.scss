@@ -1,9 +1,11 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .wrapper {
   width: 100%;
   height: 100%;
   position: relative;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .img {
@@ -11,7 +13,7 @@
   height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 8px 8px 0px 8px;
+  border-radius: 8px 8px 0;
 }
 
 .info {
@@ -19,7 +21,22 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  border-radius: 8px 0px 0px 0px;
+  border-radius: 8px 0 0;
   background-color: $bg-secondary;
   padding: 8px 16px;
+}
+
+.genre_text {
+  font-weight: $weight-medium;
+  font-size: $size-sm;
+  text-transform: capitalize;
+}
+
+.country_text {
+  font-weight: $weight-regular;
+  font-size: $size-sm;
+}
+
+.loaded {
+  opacity: 1;
 }

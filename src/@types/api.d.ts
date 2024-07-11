@@ -14,7 +14,7 @@ export interface Country {
   code: string;
   code2: string;
 }
-
+export type HallName = 'Red' | 'Green' | 'Blue';
 export type AgeRating = 'G' | 'PG' | 'PG13' | 'R' | 'NC17';
 export type FilmId = string;
 export interface Film {
@@ -47,7 +47,7 @@ export interface Place {
 }
 
 export interface FilmHall {
-  name: 'Red' | 'Green' | 'Blue';
+  name: HallName;
   places: Place[][];
   payedTickets: Ticket[];
 }
@@ -106,8 +106,75 @@ export interface PostPaymentBody {
   person: CreatePaymentPerson;
   seance: FilmTicketSeance;
   debitCard: DebitCard;
-  tikcets: {
-    row: number;
-    column: number;
+  tickets: CreatePaymentTicketsDto[];
+}
+
+export interface User {
+  phone: string;
+  firstname: string;
+  middlename?: string;
+  lastname: string;
+  email: string;
+  city?: string;
+}
+
+export interface GetUserSessionResponse extends ResponseBase {
+  user: User;
+}
+
+export interface SignInDto {
+  phone: string;
+  code?: number;
+}
+
+export interface postSignInResponse extends ResponseBase {
+  user: User;
+  token: string;
+}
+
+export interface CreateOtpDto {
+  phone: string;
+}
+
+export interface OtpResponse extends ResponseBase {
+  retryDelay: number;
+}
+
+export interface UpdateProfileProfileDto extends Omit<User, 'phone'> {}
+
+export interface UpdateProfileDto {
+  profile: UpdateProfileProfileDto;
+  phone: string;
+}
+
+export interface UpdateProfileResponse extends ResponseBase {
+  user: User;
+}
+
+export interface CreatePaymentTicketsDto {
+  row: number;
+  column: number;
+}
+
+export interface CinemaOrder {
+  _id: string;
+  filmName: string;
+  orderNumber: number;
+  tickets: Ticket[];
+  phone: string;
+  status: 'PAYED' | 'CANCELED';
+}
+
+export interface OrdersResponse extends ResponseBase {
+  orders: CinemaOrder[];
+}
+
+export interface PaymentResponse extends ResponseBase {
+  order: {
+    filmName: string;
+    orderNumber: number;
+    tickets: Ticket[];
+    phone: string;
+    status: 'PAYED' | 'CANCELED';
   };
 }

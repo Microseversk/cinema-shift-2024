@@ -1,64 +1,59 @@
-//Button
+// Button
 $btn-radius: 16px;
 $btn-paddings: 16px 32px;
-$transition-time: 0.25s;
+$transition-time: 0.15s;
 $border-width: 1px;
 $border-width-focused: 2px;
 
-//Input
+// Input
 $input-paddings: 12px 8px 12px 12px;
 $input-radius: 8px;
 
-//Typography
+// Typography
 $size-h1: 32px;
 $size-h2: 24px;
 $size-h3: 20px;
 $size-xs: 12px;
 $size-sm: 14px;
 $size-md: 16px;
-
-$weight-thin: 400;
-$weight-normal: 500;
+$weight-regular: 400;
+$weight-medium: 500;
 $weight-semibold: 600;
 $weight-bold: 700;
 
-//Tabs
+// Tabs
 $tabs-border-radius: 16px;
 $tab-border-radius: 14px;
 
-//Header
+// Header
 $nav-item-icon-size: 24px;
 
-//Other
+// Other
 $brand: #712d9c;
-
 $bg-brand: #9534d2;
+$bg-brand-extra-light: #bc8adb;
 $bg-primary: #fff;
-$bg-tertiary: #f9fafb;
-$bg-secondary: #5b5e61;
+$bg-disabled: #f3f4f6;
+$bg-tertiary: #f4f3f5;
+$bg-secondary: #e6e7e9;
 $bg-hover-primary: #7f18be;
 $bg-hover-outline-primary: #f0f6ff;
-
 $border-extra-light: #e3e5e5;
 $border-light: #ced2da;
 $border-medium: #97a1af;
-
 $text-title: #292929;
 $text-brand: #712d9c;
-$text-invert: #ffffff;
+$text-invert: #fff;
 $text-primary: #141c24;
 $text-secondary: #344051;
 $text-tertiary: #637083;
 $text-error: #f64c4c;
 $text-quartenery: #97a1af;
 $text-body-primary: #535353;
-
-$bg-primary: #ffffff;
-$bg-secondary: #f3f4f6;
-
 $indicator-focused-alternative: #0c0c0c;
-$indicator-focused: #4c94ff;
+$indicator-focused: #9b4994;
 $indicator-error: #f64c4c;
 $indicator-light: #ced2da;
+$indicator-positive: #4ecf53;
 $indicator-attention: #ffb219;
 $indicator-medium: #97a1af;

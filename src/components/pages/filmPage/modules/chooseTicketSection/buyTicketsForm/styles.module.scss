@@ -1,0 +1,46 @@
+@import '@styles/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card_form {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: $bg-disabled;
+  display: grid;
+  gap: 16px 24px;
+  grid-template-areas:
+    'number number'
+    'date cvv';
+}
+
+.card_number {
+  grid-area: number;
+}
+
+.card_date {
+  grid-area: date;
+}
+
+.card_cvv {
+  grid-area: cvv;
+}
+
+.success_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.text_center {
+  text-align: center;
+}

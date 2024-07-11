@@ -1,0 +1,111 @@
+@import '@styles/variables';
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: -200%;
+  left: 50%;
+  width: max-content;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background-color: #fff;
+  z-index: 20;
+  box-shadow: 0 2px 6px rgba($color: #000, $alpha: 28%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #fff transparent transparent;
+  }
+}
+
+.col {
+  position: absolute;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.price {
+  font-weight: $weight-semibold;
+}
+
+.places_wrapper {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.screen {
+  height: 4px;
+  background-color: $indicator-light;
+  margin-top: 8px;
+  border-radius: 16px;
+}
+
+.places_row {
+  display: flex;
+  gap: 24px;
+}
+
+.row_number {
+  width: 12px;
+}
+
+.btn_place_wrapper {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.btn_place {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $brand;
+  transition: $transition-time;
+  border-radius: 4px;
+
+  & > span {
+    visibility: hidden;
+  }
+
+  &:hover:not(:disabled) .tooltip {
+    visibility: visible;
+  }
+
+  &:disabled {
+    background-color: $indicator-light;
+    border: none;
+  }
+
+  &.choosed {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+
+    & .col {
+      visibility: visible;
+    }
+
+    &:hover .tooltip {
+      top: -100%;
+    }
+  }
+}

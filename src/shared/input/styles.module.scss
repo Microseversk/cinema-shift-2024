@@ -1,19 +1,45 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .input {
+  width: 100%;
   border-radius: $input-radius;
   border: 1px solid $border-light;
   padding: $input-paddings;
+  font-weight: $weight-regular;
 
-  &:hover:not(:disabled):not(:focus):not(.input_error) {
-    border-color: $border-medium;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgba($color: #000, $alpha: 5%);
   }
 
   &:focus {
     outline: none;
     border: 2px solid $indicator-focused;
   }
-  &_error {
+
+  &:hover:not(:disabled, :focus) {
+    border-color: $border-medium;
+  }
+
+  &.input_error {
     border: 2px solid $indicator-error !important;
+  }
+}
+
+.label {
+  display: block;
+  font-size: $size-sm;
+  font-weight: $weight-regular;
+  margin-bottom: 6px;
+}
+
+.message {
+  margin-top: 4px;
+  font-size: $size-sm;
+  font-weight: $weight-regular;
+  color: $text-tertiary;
+
+  &.message_error {
+    color: $indicator-error;
   }
 }

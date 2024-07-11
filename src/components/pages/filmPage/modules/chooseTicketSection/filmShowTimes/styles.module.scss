@@ -1,0 +1,27 @@
+@import '@styles/variables';
+
+.btn_time {
+  padding: 10px 16px;
+  border-color: $indicator-light;
+  font-weight: $weight-regular;
+}
+
+.btn_choosed_time {
+  color: $text-invert;
+  background-color: $indicator-medium;
+
+  &:hover {
+    background-color: $indicator-medium;
+  }
+}
+
+.halls_time_wrapper {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hall_wrapper {
+  margin-top: 12px;
+}

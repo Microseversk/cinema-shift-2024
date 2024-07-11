@@ -1,4 +1,4 @@
-@import '@styles/variables.scss';
+@import '@styles/variables';
 
 .h1 {
   font-size: $size-h1;
@@ -15,44 +15,38 @@
   font-weight: $weight-semibold;
 }
 
-.p {
-  font-size: $size-md;
-  font-weight: $weight-normal;
-}
-
-.xs {
+.p_12_regular {
   font-size: $size-xs;
+  font-weight: $weight-regular;
 }
-.sm {
+
+.p_14_regular {
   font-size: $size-sm;
+  font-weight: $weight-regular;
 }
-.md {
+
+.p_16_regular {
   font-size: $size-md;
-}
-.thin {
-  font-weight: $weight-thin;
+  font-weight: $weight-regular;
 }
 
-.normal {
-  font-weight: $weight-normal;
-}
-.semibold {
-  font-weight: $weight-semibold;
-}
-
-.bold {
-  font-weight: $weight-bold;
+.p_16_medium {
+  font-size: $size-md;
+  font-weight: $weight-medium;
 }
 
 .primary {
   color: $text-primary;
 }
+
 .secondary {
   color: $text-secondary;
 }
+
 .tertiary {
   color: $text-tertiary;
 }
+
 .invert {
   color: $text-invert;
 }
