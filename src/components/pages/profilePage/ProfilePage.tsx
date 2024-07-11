@@ -28,7 +28,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <Typography tag="h2" variant="h2">
           Профиль
@@ -74,6 +74,6 @@ export const ProfilePage = () => {
           Обновить данные
         </Button>
       </form>
-    </div>
+    </>
   );
 };
