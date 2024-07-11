@@ -1,4 +1,5 @@
 import { MovieIcon, Ticket, Typography, User } from '@src/shared';
+import { ROUTES } from '@src/utils';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { useLocation } from 'react-router-dom';
 import { NavLinkItem } from '../header/navLinkItem/NavLinkItem';
@@ -6,6 +7,9 @@ import styles from './styles.module.scss';
 
 export const BottomNav = () => {
   const { pathname } = useLocation();
+
+  if (![ROUTES.MAIN, ROUTES.PROFILE, ROUTES.ORDERS].includes(pathname)) return null;
+
   return (
     <footer className={styles.wrapper}>
       <ul className={styles.list}>
