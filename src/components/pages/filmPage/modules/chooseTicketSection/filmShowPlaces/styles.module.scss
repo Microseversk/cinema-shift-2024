@@ -1,4 +1,5 @@
 @import '@styles/variables';
+@import '@styles/mixins';
 
 .tooltip {
   visibility: hidden;
@@ -38,11 +39,15 @@
 }
 
 .places_wrapper {
-  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: max-content;
   text-align: center;
+
+  @include phone {
+    overflow-x: auto;
+  }
 }
 
 .screen {
@@ -50,6 +55,10 @@
   background-color: $indicator-light;
   margin-top: 8px;
   border-radius: 16px;
+
+  @include phone {
+    display: none;
+  }
 }
 
 .places_row {
