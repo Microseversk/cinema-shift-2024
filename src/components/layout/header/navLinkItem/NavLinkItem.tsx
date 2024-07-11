@@ -7,10 +7,11 @@ interface NavLinkItemProps {
   children?: React.ReactNode;
   onClick?: () => void;
   active?: boolean;
+  className?: string;
 }
 
-export const NavLinkItem = ({ to, children, active, onClick }: NavLinkItemProps) => {
-  const classes = classNames(styles.link, { [styles.active]: active });
+export const NavLinkItem = ({ to, children, active, className, onClick }: NavLinkItemProps) => {
+  const classes = classNames(styles.link, { [styles.active]: active }, className);
 
   return (
     <Link to={to} className={classes} onClick={onClick}>
