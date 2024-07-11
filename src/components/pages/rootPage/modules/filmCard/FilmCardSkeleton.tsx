@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 export const FilmCardSkeleton = () => (
   <div className={styles.card}>
-    <Skeleton width={`100%`} height={300} />
+    <Skeleton className={styles.skeleton_img} />
     <div>
       <h2>
         <Skeleton width={`90%`} height={24} />

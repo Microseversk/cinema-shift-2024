@@ -1,3 +1,6 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
 .card {
   display: flex;
   flex-direction: column;
@@ -14,10 +17,12 @@
 }
 
 .skeleton_img {
-  width: 100%;
   height: 300px;
-  background-color: #ccc;
-  border-radius: 8px;
+  border-radius: 12px;
+
+  @include phone {
+    aspect-ratio: 1/1;
+  }
 }
 
 .skeleton_name {
