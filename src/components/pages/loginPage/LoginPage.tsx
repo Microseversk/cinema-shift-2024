@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import styles from './styles.module.scss';
 
 import { SignInDto } from '@src/@types/api';
+import { authContext } from '@src/context/authContext/authContext';
 import { Button, Input, Typography } from '@src/shared';
-import { authContext } from '@src/store/authContext/authContext';
 import { otpIsValid, phoneIsValid } from '@src/utils';
 import { usePostOtpQuery } from '@src/utils/api/hooks/usePostOtpQuery';
 import { usePostUserSignInQuery } from '@src/utils/api/hooks/usePostUserSignInQuery';

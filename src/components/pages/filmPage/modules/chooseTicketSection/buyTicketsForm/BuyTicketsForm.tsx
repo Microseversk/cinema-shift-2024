@@ -1,7 +1,7 @@
 import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src/@types/api';
+import { authContext } from '@src/context/authContext/authContext';
 import { ArrowSmallLeftIcon, Button, Input, SuccessIcon, Typography } from '@src/shared';
 import { Back } from '@src/shared/Back/Back';
-import { authContext } from '@src/store/authContext/authContext';
 import {
   cardCVVIsValid,
   cardDateIsValid,
