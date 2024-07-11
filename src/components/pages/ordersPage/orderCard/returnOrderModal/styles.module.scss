@@ -1,0 +1,28 @@
+@import '@styles/variables';
+
+.deleting_modal {
+  width: 100%;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.deleting_bs {
+  width: 100%;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.return_btn {
+  border-color: $border-light;
+}

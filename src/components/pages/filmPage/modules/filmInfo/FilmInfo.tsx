@@ -2,6 +2,7 @@ import { Film } from '@src/@types/api';
 import { FilmImage, FilmRating, Typography } from '@src/shared';
 import { API } from '@src/utils/constants/api';
 
+import { AGE_RATING_MAP } from '@src/utils/constants/ageRatingMap';
 import styles from './styles.module.scss';
 
 interface FilmInfoProps {
@@ -19,7 +20,7 @@ export const FilmInfo = ({ film }: FilmInfoProps) => (
     />
     <div>
       <Typography tag="h1" variant="h1">
-        {film.name}
+        {film.name} ({AGE_RATING_MAP[film.ageRating]})
       </Typography>
       <div>
         <FilmRating rating={Number(film.userRatings.kinopoisk)} />

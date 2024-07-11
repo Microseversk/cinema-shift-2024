@@ -8,7 +8,7 @@ export const RootPage = () => {
   const { data, isLoading } = useGetTodayQuery();
 
   return (
-    <>
+    <div>
       <Typography tag="h2" variant="h2">
         Афиша
       </Typography>
@@ -23,6 +23,6 @@ export const RootPage = () => {
           <>{data?.films.map((film) => <FilmCard key={film.id} film={film} />)}</>
         )}
       </div>
-    </>
+    </div>
   );
 };

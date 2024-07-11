@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import styles from './styles.module.scss';
 
 import { SignInDto } from '@src/@types/api';
+import { authContext } from '@src/context/authContext/authContext';
 import { Button, Input, Typography } from '@src/shared';
-import { authContext } from '@src/store/authContext/authContext';
 import { otpIsValid, phoneIsValid } from '@src/utils';
 import { usePostOtpQuery } from '@src/utils/api/hooks/usePostOtpQuery';
 import { usePostUserSignInQuery } from '@src/utils/api/hooks/usePostUserSignInQuery';
@@ -13,20 +13,20 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
+  const mutateOtp = usePostOtpQuery();
+  const mutateLogin = usePostUserSignInQuery();
   const navigate = useNavigate();
   const { setUser } = useContext(authContext);
+  const [isWritingOtp, setIsWritingOtp] = useState(false);
   const [count, { startCountdown }] = useCountdown({
     interval: 1000,
     start: 60,
   });
-  const [isWritingOtp, setIsWritingOtp] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignInDto>({ reValidateMode: 'onChange' });
-  const mutateOtp = usePostOtpQuery();
-  const mutateLogin = usePostUserSignInQuery();
 
   const onSubmitLogin: SubmitHandler<SignInDto> = (data) => {
     if (!isWritingOtp && !data.code) {

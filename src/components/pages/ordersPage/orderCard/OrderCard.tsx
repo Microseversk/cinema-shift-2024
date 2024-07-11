@@ -1,11 +1,9 @@
 import { CinemaOrder } from '@src/@types/api';
 import { Button, Chips, Typography } from '@src/shared';
-import { QuestionIcon } from '@src/shared/icons/QuestionIcon';
-import { Modal } from '@src/shared/modal/Modal';
 import { useGetFilmByIdQuery } from '@src/utils/api/hooks/useGetFilmByIdQuery';
-import { usePutOrderCancelQuery } from '@src/utils/api/hooks/usePutOrderCancelQuery';
 import { groupTicketsPlaces } from '@src/utils/helpers/groupTicketsPlaces';
 import { useState } from 'react';
+import { ReturnOrderModal } from './returnOrderModal/ReturnOrderModal';
 import styles from './styles.module.scss';
 
 interface OrderCardProps {
@@ -15,8 +13,7 @@ interface OrderCardProps {
 export const OrderCard = ({ order }: OrderCardProps) => {
   // TODO: Убрать, когда в заказах будет прилетать название фильма
   const { data } = useGetFilmByIdQuery(order.tickets[0].filmId || '');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const { mutate, isPending } = usePutOrderCancelQuery();
+  const [isReturning, setIsReturning] = useState(false);
 
   if (order.status === 'CANCELED') {
     return (
@@ -35,34 +32,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
 
   return (
     <>
-      <Modal isOpen={isDeleting} onClose={() => setIsDeleting(false)}>
-        <div className={styles.deleting_modal}>
-          <QuestionIcon />
-          <Typography tag="h3" variant="h3">
-            Вернуть билет?
-          </Typography>
-          <div className={styles.btn_wrapper}>
-            <Button
-              fullWidth
-              variant="outlined"
-              loading={isPending}
-              onClick={() =>
-                mutate(
-                  {
-                    params: { orderId: order._id },
-                  },
-                  { onSuccess: () => setIsDeleting(false) },
-                )
-              }
-            >
-              Вернуть
-            </Button>
-            <Button fullWidth onClick={() => setIsDeleting(false)}>
-              Отменить
-            </Button>
-          </div>
-        </div>
-      </Modal>
+      <ReturnOrderModal orderId={order._id} isOpen={isReturning} onClose={() => setIsReturning(false)} />
       <div className={styles.card}>
         <div className={styles.header}>
           <Typography variant="p_14_regular" color="tertiary">
@@ -90,7 +60,7 @@ export const OrderCard = ({ order }: OrderCardProps) => {
             Код билета {order.orderNumber}
           </Typography>
         </div>
-        <Button variant="outlined" fullWidth className={styles.button} onClick={() => setIsDeleting(true)}>
+        <Button variant="outlined" fullWidth className={styles.button} onClick={() => setIsReturning(true)}>
           Вернуть билет
         </Button>
       </div>

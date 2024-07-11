@@ -1,6 +1,6 @@
 import { UpdateProfileDto } from '@src/@types/api';
+import { authContext } from '@src/context/authContext/authContext';
 import { Button, Input, Typography } from '@src/shared';
-import { authContext } from '@src/store/authContext/authContext';
 import { emailIsValid, firstNameIsValid, lastNameIsValid, phoneIsValid } from '@src/utils';
 import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
 import { useContext } from 'react';
@@ -28,7 +28,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <Typography tag="h2" variant="h2">
           Профиль
@@ -74,6 +74,6 @@ export const ProfilePage = () => {
           Обновить данные
         </Button>
       </form>
-    </div>
+    </>
   );
 };
