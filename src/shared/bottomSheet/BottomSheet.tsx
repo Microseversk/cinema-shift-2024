@@ -1,3 +1,4 @@
+import { useDisableScroll } from '@src/utils/hooks/useDisableScroll';
 import classNames from 'classnames';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -8,6 +9,7 @@ interface BottomSheetProps extends ModalProps {}
 
 export const BottomSheet = ({ isOpen, onClose, children, className }: BottomSheetProps) => {
   const [isClosing, setIsClosing] = useState(false);
+  useDisableScroll({ dep: isOpen, htmlElement: document.body, className: styles.disable_scroll });
   const classes = classNames(
     styles.bottom_sheet,
     {

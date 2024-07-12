@@ -1,3 +1,4 @@
+import { useDisableScroll } from '@src/utils/hooks/useDisableScroll';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import styles from './styles.module.scss';
@@ -10,6 +11,7 @@ export interface ModalProps {
 }
 
 export const Modal = ({ children, isOpen, onClose, className }: ModalProps) => {
+  useDisableScroll({ dep: isOpen, htmlElement: document.body, className: styles.disable_scroll });
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={onClose}>
