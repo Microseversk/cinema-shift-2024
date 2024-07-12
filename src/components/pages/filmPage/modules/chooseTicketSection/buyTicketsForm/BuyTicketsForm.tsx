@@ -160,12 +160,6 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
         </div>
         <div>
           <Typography variant="p_12_regular" color="tertiary">
-            Фильм
-          </Typography>
-          <Typography variant="p_16_regular">{data?.data.order.filmName}</Typography>
-        </div>
-        <div>
-          <Typography variant="p_12_regular" color="tertiary">
             Дата и время
           </Typography>
           <Typography variant="p_16_regular">
