@@ -1,8 +1,6 @@
+import { useAuth } from '@src/context/authContext';
 import { Cinema, Exit, Ticket, Typography, User } from '@src/shared';
-
-import { authContext } from '@src/context/authContext/authContext';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
-import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavLinkItem } from './navLinkItem/NavLinkItem';
 import styles from './styles.module.scss';
@@ -10,7 +8,7 @@ import styles from './styles.module.scss';
 interface HeaderProps extends React.ComponentPropsWithoutRef<'header'> {}
 
 export const Header = ({ ...props }: HeaderProps) => {
-  const { user, setUser } = useContext(authContext);
+  const { user, setUser } = useAuth();
   const { pathname } = useLocation();
 
   const handleLogout = () => {

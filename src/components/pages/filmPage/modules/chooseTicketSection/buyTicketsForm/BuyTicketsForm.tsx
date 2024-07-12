@@ -1,5 +1,5 @@
 import { CreatePaymentTicketsDto, FilmTicketSeance, PostPaymentBody } from '@src/@types/api';
-import { authContext } from '@src/context/authContext/authContext';
+import { useAuth } from '@src/context/authContext';
 import { ArrowSmallLeftIcon, Button, Input, SuccessIcon, Typography } from '@src/shared';
 import { Back } from '@src/shared/Back/Back';
 import {
@@ -14,7 +14,7 @@ import {
 import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { groupTicketsPlaces } from '@src/utils/helpers/groupTicketsPlaces';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
@@ -29,7 +29,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
   const navigate = useNavigate();
   const { mutate, data, isPending } = usePostPaymentQuery();
   const [form, setForm] = useState<'person' | 'card' | 'success'>('person');
-  const { user } = useContext(authContext);
+  const { user } = useAuth();
 
   const {
     register,

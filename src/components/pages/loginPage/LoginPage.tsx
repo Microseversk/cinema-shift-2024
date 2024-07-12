@@ -1,22 +1,21 @@
-import { useContext, useState } from 'react';
-import styles from './styles.module.scss';
-
 import { SignInDto } from '@src/@types/api';
-import { authContext } from '@src/context/authContext/authContext';
+import { useAuth } from '@src/context/authContext';
 import { Button, Input, Typography } from '@src/shared';
 import { otpIsValid, phoneIsValid } from '@src/utils';
 import { usePostOtpQuery } from '@src/utils/api/hooks/usePostOtpQuery';
 import { usePostUserSignInQuery } from '@src/utils/api/hooks/usePostUserSignInQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { useCountdown } from '@src/utils/hooks/useCountdown';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import styles from './styles.module.scss';
 
 export const LoginPage = () => {
   const mutateOtp = usePostOtpQuery();
   const mutateLogin = usePostUserSignInQuery();
   const navigate = useNavigate();
-  const { setUser } = useContext(authContext);
+  const { setUser } = useAuth();
   const [isWritingOtp, setIsWritingOtp] = useState(false);
   const [count, { startCountdown }] = useCountdown({
     interval: 1000,

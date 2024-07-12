@@ -1,10 +1,9 @@
-import { authContext } from '@src/context/authContext/authContext';
+import { useAuth } from '@src/context/authContext';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
-import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const PrivateRoute = () => {
-  const { user } = useContext(authContext);
+  const { user } = useAuth();
   const token = window.localStorage.getItem('token');
 
   if (!token) {

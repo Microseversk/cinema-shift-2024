@@ -1,7 +1,7 @@
 import { User } from '@src/@types/api';
 import { createContext } from 'react';
 
-interface AuthContext {
+export interface AuthContext {
   user: User | undefined;
   setUser: (user: User | undefined) => void;
 }

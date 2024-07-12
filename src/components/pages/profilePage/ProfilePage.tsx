@@ -1,15 +1,14 @@
 import { UpdateProfileDto } from '@src/@types/api';
-import { authContext } from '@src/context/authContext/authContext';
+import { useAuth } from '@src/context/authContext';
 import { Button, Input, Typography } from '@src/shared';
 import { emailIsValid, firstNameIsValid, lastNameIsValid, phoneIsValid } from '@src/utils';
 import { usePatchUserProfileQuery } from '@src/utils/api/hooks/usePatchUserProfileQuery';
-import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
   const { mutate, isPending } = usePatchUserProfileQuery();
-  const { user } = useContext(authContext);
+  const { user } = useAuth();
 
   const {
     register,
