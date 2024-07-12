@@ -14,7 +14,7 @@ import {
 import { usePostPaymentQuery } from '@src/utils/api/hooks/usePostPaymentQuery';
 import { NAVIGATE_ROUTES } from '@src/utils/constants/navigateRoutes';
 import { groupTicketsPlaces } from '@src/utils/helpers/groupTicketsPlaces';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
@@ -28,7 +28,7 @@ interface BuyTicketsFormProps {
 export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps) => {
   const navigate = useNavigate();
   const { mutate, data, isPending } = usePostPaymentQuery();
-  const [form, setForm] = useState<'person' | 'card' | 'success'>('person');
+  const [form, setForm] = useState<'person' | 'card' | 'success' | 'error'>('person');
   const { user } = useAuth();
 
   const {
@@ -44,17 +44,18 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
     },
   });
 
+  useEffect(() => {
+    if (data?.data?.order) {
+      setForm('success');
+    } else if (data && !isPending) {
+      setForm('error');
+    }
+  }, [data]);
+
   const onSubmit: SubmitHandler<PostPaymentBody> = (data) => {
-    mutate(
-      {
-        params: data,
-      },
-      {
-        onSuccess: () => {
-          setForm('success');
-        },
-      },
-    );
+    mutate({
+      params: data,
+    });
   };
 
   if (form === 'person') {
@@ -143,7 +144,7 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
       </>
     );
   }
-  if (form === 'success' && data) {
+  if (form === 'success') {
     return (
       <div className={styles.success_form}>
         <div className={styles.text_center}>
@@ -187,6 +188,25 @@ export const BuyTicketsForm = ({ filmId, seance, tickets }: BuyTicketsFormProps)
           className={styles.text_center}
         >
           Перейти в личный кабинет
+        </Button>
+      </div>
+    );
+  }
+
+  if (form === 'error') {
+    return (
+      <div className={styles.success_form}>
+        <Typography tag="h2" variant="h2" className={styles.text_center}>
+          Ошибка: места уже заняты
+        </Typography>
+
+        <Button
+          variant="link"
+          onClick={() => navigate(NAVIGATE_ROUTES.ROOT_PAGE)}
+          fullWidth
+          className={styles.text_center}
+        >
+          Перейти на афишу
         </Button>
       </div>
     );
